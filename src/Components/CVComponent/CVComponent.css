@@ -1,0 +1,67 @@
+.MainDiv {
+    padding: 120px;
+    margin: 100px;
+    margin-top: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+    background-color: #6BA8A9;
+    text-align: justify;
+    color: rgb(59, 59, 59);
+}
+
+.blockIMG {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.NameDiv {
+    display: block;
+    font-size: 90px;
+    text-align: center;
+    margin-right: 100px;
+}
+
+.imageCV {
+    width: 300px;
+    height: 300px;
+    background-color: #000000;
+}
+
+h4 {
+    text-align: center;
+    font-size: 110%; 
+    color: rgb(131, 23, 23);
+}
+
+.knowDiv {
+    margin: 2em;
+    text-align: center;
+}
+
+.buttonStyle {
+    display: inline-block;
+    background-color: #686868;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin: 0 0.3em 0.3em 0;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-weight: 300;
+    color: #FFFFFF;
+    text-align: center;
+    transition: all 0.2s;
+}
+
+.buttonStyle:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+}
+
+@media all and (max-width:30em) {
+    .buttonStyle {
+        display:block;
+        margin: 0.4em auto;
+    }
+}

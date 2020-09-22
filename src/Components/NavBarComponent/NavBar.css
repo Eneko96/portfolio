@@ -1,0 +1,19 @@
+.Head {
+  background-color: #357376;
+  padding: 13px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+
+.titleSyle {
+  margin-left: 60px;
+  font-size: larger;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.Lang {
+  margin-right: 3em;
+}

@@ -1,0 +1,8 @@
+
+.DemonstrationStyle {
+    min-width: 500px;
+    min-height: 500px;
+    background-color: #666;
+    display: block;
+    position: relative;
+}

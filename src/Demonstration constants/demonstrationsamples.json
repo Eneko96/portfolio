@@ -1,0 +1,4 @@
+{
+    "react": "            function App() (&lt;Router&gt;&lt;Switch&gt;&lt;Route path=/ exact&gt;&lt;MainPage/&gt;&lt;/Route&gt;&lt;Route path=/Demonstration/:id &gt;&lt;DemonstrationPage/&gt;&lt;/Route&gt;&lt;/Switch&gt;&lt;/Router&gt;//);export default App;"
+    
+}
