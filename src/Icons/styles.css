@@ -19,3 +19,12 @@
   right: 0;
   top: 8px;
 }
+
+.lay-icon path {
+  stroke: #5C6573;
+  fill: white;
+}
+
+.lay-icon.active path {
+  fill: #1C304B;
+}

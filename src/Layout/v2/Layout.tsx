@@ -9,23 +9,11 @@ import { PreFooter } from '../../Components/v2/PreFooter/PreFooter'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { handleDownloadResumee } from '../../utils/downloadCV'
 import { useEffect, useState } from 'react'
-import book from '/newIcons/book-o.svg'
-import oBook from '/newIcons/book.svg'
-import chat from '/newIcons/chat-o.svg'
-import oChat from '/newIcons/chat.svg'
-import download from '/newIcons/download-o.svg'
-import oDownload from '/newIcons/download.svg'
-import nLocation from '/newIcons/location-o.svg'
-import oLocation from '/newIcons/location.svg'
-import work from '/newIcons/work-o.svg'
-import oWork from '/newIcons/work.svg'
-import folder from '/newIcons/folder-o.svg'
-import oFolder from '/newIcons/folder.svg'
-import view from '/newIcons/view-o.svg'
-import oView from '/newIcons/view.svg'
 import logo from '/Logo.svg'
-import './styles.css'
 import { isMobile } from '@Utils/isMobile'
+import { Icons } from '../../Icons/LayoutIcons'
+import './styles.css'
+
 const TITLE_OFFSET = 100
 
 export const Layout: React.FC<any> = ({ children }) => {
@@ -88,12 +76,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           <SidebarButton
             key={1}
             className={selected === 'button2' ? 'selected' : ''}
-            icon={
-              <img
-                src={selected === 'button2' ? oLocation : nLocation}
-                alt="svg"
-              />
-            }
+            icon={<Icons.LocationIcon active={selected === 'button2'} />}
             id="button2"
             href="#"
             label="About"
@@ -106,7 +89,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           />
           <SidebarButton
             key={2}
-            icon={<img src={selected === 'button3' ? oWork : work} alt="svg" />}
+            icon={<Icons.WorkIcon active={selected === 'button3'} />}
             className={selected === 'button3' ? 'selected' : ''}
             id="button3"
             href="#"
@@ -119,7 +102,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           />
           <SidebarButton
             key={3}
-            icon={<img src={selected === 'button4' ? oBook : book} alt="svg" />}
+            icon={<Icons.BookIcon active={selected === 'button4'} />}
             className={selected === 'button4' ? 'selected' : ''}
             id="button4"
             href="#"
@@ -132,7 +115,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           />
           <SidebarButton
             key={4}
-            icon={<img src={selected === 'button5' ? oView : view} alt="svg" />}
+            icon={<Icons.ViewIcon active={selected === 'button5'} />}
             className={selected === 'button5' ? 'selected' : ''}
             id="button5"
             href="#"
@@ -145,9 +128,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           />
           <SidebarButton
             key={5}
-            icon={
-              <img src={selected === 'button6' ? oFolder : folder} alt="svg" />
-            }
+            icon={<Icons.FolderIcon active={selected === 'button6'} />}
             className={selected === 'button6' ? 'selected' : ''}
             id="button6"
             href="#"
@@ -161,7 +142,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           <SidebarDivider key={9}>contact</SidebarDivider>
           <SidebarButton
             key={7}
-            icon={<img src={selected === 'button8' ? oChat : chat} alt="svg" />}
+            icon={<Icons.ChatIcon active={selected === 'button8'} />}
             className={selected === 'button8' ? 'selected' : ''}
             id="button8"
             label="Book a Call"
@@ -175,12 +156,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           <SidebarButton
             key={8}
             href="#"
-            icon={
-              <img
-                src={selected === 'button9' ? oDownload : download}
-                alt="svg"
-              />
-            }
+            icon={<Icons.DownloadIcon active={selected === 'button9'} />}
             className={selected === 'button9' ? 'selected' : ''}
             id="button9"
             label="Resume"
