@@ -1,0 +1,45 @@
+---
+import { Work } from './Work/Work'
+
+const { data } = Astro.props
+---
+
+<div class="section-v2-container" id="work">
+  <h2 class="section-v2-title">Work Experience</h2>
+  <div class="section-v2-work-container"></div>
+  <Work data={data} />
+  <!-- <SeeMore styles={{ marginTop: '72px' }} more={more} setMore={toggleMore} /> -->
+</div>
+<style is:global>
+  .section-v2-work-container > .workv2-container {
+    margin-top: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #ebebee;
+  }
+
+  .section-v2-work-container > .workv2-container:first-child {
+    margin-top: 0;
+  }
+
+  .section-v2-work-container > .workv2-container:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .tag-ds h2.section-v2-title {
+    margin-bottom: 40px;
+  }
+
+  .section-v2-container {
+    margin-top: 72px;
+  }
+
+  @media (max-width: 768px) {
+    .section-v2-title {
+      margin-bottom: 10px;
+    }
+    .section-v2-container {
+      margin-top: 40px;
+    }
+  }
+</style>

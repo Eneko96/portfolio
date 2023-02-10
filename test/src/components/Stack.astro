@@ -1,0 +1,73 @@
+---
+const { baseData } = Astro.props
+const stackList = () => {
+  if (baseData) {
+    const { tech_stack } = baseData
+    const { id, greeting_id, created_at, ...rest } = tech_stack[0]
+    return rest
+  }
+  return []
+}
+---
+
+<div id="teckstack">
+  <h2>Tech Stack</h2>
+  <div class="tech-stack-container">
+    {
+      Object.entries(stackList()).map((entry, idx) => {
+        if (entry[1])
+          return (
+            <div>
+              <div title={entry[0]} class="tech-stack-element">
+                <img
+                  src={`/${entry[0]}.png`}
+                  height="50"
+                  width="50"
+                  alt={entry[0]}
+                />
+              </div>
+              <div
+                style={{
+                  textAlign: 'center',
+                  textTransform: 'capitalize'
+                }}
+                class="small"
+              >
+                {entry[0]}
+              </div>
+            </div>
+          )
+        return null
+      })
+    }
+  </div>
+  <div class="separator" style={{ margin: '72px 0' }}></div>
+</div>
+<style>
+  .tech-stack-container {
+    display: flex;
+    gap: 56px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+
+  .tech-stack-element {
+    height: 75px;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .tech-stack-container {
+      display: grid;
+      grid-template-columns: repeat(3, 75px);
+      row-gap: 16px;
+    }
+    .tech-stack-element {
+      flex-direction: column;
+      align-items: center;
+      margin: auto;
+    }
+  }
+</style>

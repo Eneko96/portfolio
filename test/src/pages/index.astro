@@ -1,0 +1,145 @@
+---
+import CaseStudies from '../components/CaseStudies.astro'
+import HeadLine from '../components/HeadLine.astro'
+import Section from '../components/Section.astro'
+import Stack from '../components/Stack.astro'
+import Studies from '../components/Studies.astro'
+import Layout from '../layouts/Layout.astro'
+import { supabase } from '../supabase'
+
+const { data: baseData } = await supabase
+  .from('greeting')
+  .select(
+    `
+      *,
+      work_v2 (
+        id,
+        client,
+        date,
+        project_type,
+        description,
+        tech_stack
+      ),
+      projects_v2 (
+        id
+      ),
+      cert_ref (
+        id,
+        name,
+        type,
+        date,
+        subtitle,
+        description
+      ),
+      booking (
+        id
+      ),
+      tech_stack (
+        *
+      )
+    `
+  )
+  .order('id', { foreignTable: 'work_v2', ascending: true })
+  .single()
+---
+
+<Layout title="Welcome to Astro.">
+  <main>
+    <HeadLine title="Hey, welcome to my portfolio!" />
+    <div class="content home-container">
+      <div class="home-hero-container">
+        <div class="home-hero-brief">
+          <h1 class="home-hero-title">
+            I am {baseData.name}, {baseData.position}
+          </h1>
+          <div class="subtitle">Based in</div>
+          <div class="base">Dublin, Ireland</div>
+          <br />
+          <div class="subtitle">Experience In the Following industries</div>
+          <div class="base">{baseData.experience}</div>
+          <br />
+          <div class="subtitle">Core skills</div>
+          <div class="base">{baseData.skills}</div>
+          <br />
+          <div class="subtitle">Cliffton Strengths</div>
+          <div class="base">{baseData.strengths}</div>
+        </div>
+        <div class="home-hero-image">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              type="image/png"
+              srcset="/home_img_mobile.png"
+            />
+            <source type="image/webp" srcset="/irish.webp" />
+            <source type="image/jpeg" srcset="/irish.jpg" />
+            <img loading="eager" alt="head image" class="header-image" />
+          </picture>
+        </div>
+      </div>
+      <div class="separator"></div>
+      <Section data={baseData.work_v2} />
+      <Studies data={baseData.cert_ref} />
+      <Stack baseData={baseData} />
+      <CaseStudies />
+    </div>
+  </main>
+</Layout>
+
+<style global>
+  .home-container {
+    margin: 39px auto 0;
+    max-width: 1024px;
+  }
+
+  .home-hero-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .home-hero-brief {
+    margin-right: 16px;
+  }
+
+  .home-hero-brief > .home-hero-title {
+    margin-bottom: 16px;
+  }
+
+  .header-image {
+    width: 440px;
+    height: 466px;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    .home-hero-container {
+      position: relative;
+    }
+    .home-hero-image {
+      width: 167px;
+      height: 497px;
+    }
+    .home-hero-brief {
+      max-width: 185px;
+    }
+    .home-hero-title {
+      width: 202px;
+      font-size: 32px;
+      line-height: 40px;
+    }
+    .header-image {
+      top: 0;
+      width: auto;
+      height: auto;
+      position: absolute;
+      right: -10px;
+    }
+  }
+</style>
+<style is:global>
+  @media (max-width: 768px) {
+      .separator {
+      margin-top: 40px;
+    }
+  }
+</style>

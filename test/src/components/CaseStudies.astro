@@ -1,0 +1,163 @@
+---
+import { Card } from './Card/Card'
+import { CustomChip } from './Work/Work'
+
+export function tmpSort(list: { name: string }[]) {
+  return list.sort((a, b) => {
+    if (a.name === 'weather-hackaton') return -1
+    if (b.name === 'weather-hackaton') return 1
+    if (a.name === 'portfolio') return -1
+    if (b.name === 'portfolio') return 1
+    if (a.name === 'BidsSocket') return -1
+    if (b.name === 'BidsSocket') return 1
+    return 0
+  })
+}
+
+export interface IRepos {
+  clone_url: string
+  id: number
+  name: string
+  homepage: string
+  private_repo: boolean
+  description: string
+  created_at: string
+  languages_url: string
+  topics: string[]
+}
+
+const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app']
+const OWNER = 'Eneko96'
+const BRANCH = 'main'
+
+const repos = await fetch(import.meta.env.VITE_GITHUB_URI)
+const res: IRepos[] = await repos.json()
+---
+
+<div class="case-studies-container" id="casestudies">
+  <h2 class="case-studies-title">Projects</h2>
+  <div class="case-studies">
+    {res.map(
+      ({
+        id,
+        clone_url: _,
+        homepage,
+        name,
+        private_repo,
+        description,
+      }) => (
+        <Card client:visible class="case-studies-card">
+          <div class="card-img-container">
+            <img
+              class="card-img"
+              src={
+                TEMP_NAMES.includes(name)
+                  ? `/${name}.png`
+                  : 'https://picsum.photos/500?random=2.webp'
+              }
+              alt="project-image"
+              loading="lazy"
+            />
+          </div>
+          <CustomChip client:load>
+            {private_repo ? 'private' : 'public' + ' Repository'}
+          </CustomChip>
+          <div class="card-title">{name}</div>
+          <div class="card-description-container">
+            <div class="subtitle">{homepage}</div>
+            <div class="medium card-description-inner">
+              {description ??
+                'There is no short description at the moment'}
+            </div>
+          </div>
+          <button class="button card-button-details">See Details</button>
+        </Card>
+      )
+    )}
+  </div>
+</div>
+<style>
+.custom-chip {
+  border-radius: 16px;
+  background-color: var(--secondary100);
+  text-transform: uppercase;
+  padding: 4px 16px;
+}
+
+.case-studies {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px
+}
+
+.case-studies-card {
+  animation: scaleit .2s;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s;
+}
+
+.case-studies-card > .custom-chip {
+  width: fit-content;
+}
+
+.case-studies-card:hover {
+  transform: scale(1.01);
+  transition: transform .2s;
+}
+
+.case-studies-container { 
+  margin-bottom: 72px; 
+}
+
+.case-studies-title {
+  margin-bottom: 40px !important;
+}
+
+.card-img-container {
+  margin: 0 -24px;
+  margin-bottom: 20px;
+  height: 200px;
+}
+
+.card-img {
+  height: 200px;
+  margin-bottom: 20px;
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-title {
+  margin-top: 24px !important;
+  margin-bottom: 8px !important;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.card-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.card-description-inner {
+  color: var(--neutral700);
+}
+
+.card-button-details {
+  margin-top: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 768px) {
+  .case-studies {
+    grid-template-columns: none;
+    grid-template-rows: auto;
+    width: 335px;
+    margin: auto;
+  }
+} 
+</style>
