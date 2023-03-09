@@ -35,13 +35,16 @@ export const CaseStudies = () => {
   const toggleMore = () => setMore(!more)
 
   useEffect(() => {
+    const controller = new AbortController()
+    const { signal } = controller
     const getRepos = async () => {
-      const repos = await fetch(import.meta.env.VITE_GITHUB_URI)
+      const repos = await fetch(import.meta.env.VITE_GITHUB_URI, { signal })
       const res = await repos.json()
       tmpSort(res)
       setRepos(res)
     }
     getRepos()
+    return () => controller.abort()
   }, [])
 
   const memoRepos = useMemo(
