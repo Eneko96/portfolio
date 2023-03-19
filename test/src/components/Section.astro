@@ -1,14 +1,15 @@
 ---
-import { Work } from './Work/Work'
+import { Work } from './Work/Work';
 
-const { data } = Astro.props
+const { data } = Astro.props;
 ---
 
 <div class="section-v2-container" id="work">
   <h2 class="section-v2-title">Work Experience</h2>
-  <div class="section-v2-work-container"></div>
-  <Work data={data} />
-  <!-- <SeeMore styles={{ marginTop: '72px' }} more={more} setMore={toggleMore} /> -->
+  <div class="section-v2-work-container">
+    <Work data={data} />
+  </div>
+  <!-- <SeeMore client:load styles={{ marginTop: '72px' }} /> -->
 </div>
 <style is:global>
   .section-v2-work-container > .workv2-container {

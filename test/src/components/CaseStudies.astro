@@ -1,7 +1,6 @@
 ---
 import { Card } from './Card/Card';
 import { CustomChip } from './Work/Work';
-const { pathname } = Astro.url;
 const OWNER = 'Eneko96';
 const BRANCH = 'main';
 
@@ -52,7 +51,7 @@ const res: IRepos[] = await repos.json();
             topics,
             languages_url,
           }) => (
-            <Card client:visible class="case-studies-card">
+            <Card client:visible className="case-studies-card">
               <div class="card-img-container">
                 <img
                   class="card-img"
@@ -65,7 +64,7 @@ const res: IRepos[] = await repos.json();
                   loading="lazy"
                 />
               </div>
-              <CustomChip client:load>
+              <CustomChip className="custom-chip">
                 {private_repo ? 'private' : 'public' + ' Repository'}
               </CustomChip>
               <div class="card-title">{name}</div>
@@ -75,12 +74,14 @@ const res: IRepos[] = await repos.json();
                   {description ?? 'There is no short description at the moment'}
                 </div>
               </div>
-              <a
-                class="button card-button-details"
-                href={`/projects?title=${name}&owner=${OWNER}&repo=${name}&branch=${BRANCH}&ca=${created_at}&l_u=${languages_url}&topics=${topics}`}
-              >
-                See Details
-              </a>
+              <button class="button card-button-details">
+                <a
+                  style="color:inherit"
+                  href={`/projects/${name}?owner=${OWNER}&repo=${name}&branch=${BRANCH}&ca=${created_at}&l_u=${languages_url}&topics=${topics}`}
+                >
+                  See Details
+                </a>
+              </button>
             </Card>
           )
         )
@@ -93,6 +94,7 @@ const res: IRepos[] = await repos.json();
     background-color: var(--secondary100);
     text-transform: uppercase;
     padding: 4px 16px;
+    width: fit-content;
   }
 
   .case-studies {
@@ -106,10 +108,6 @@ const res: IRepos[] = await repos.json();
     display: flex;
     flex-direction: column;
     transition: transform 0.2s;
-  }
-
-  .case-studies-card > .custom-chip {
-    width: fit-content;
   }
 
   .case-studies-card:hover {

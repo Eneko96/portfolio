@@ -1,4 +1,4 @@
-import { Sidebar, SidebarButton } from '@adeccoux/tag-ds/sidebar';
+import Sidebar, { SidebarButton } from '@adeccoux/tag-ds/sidebar';
 import { useState } from 'react';
 import { sElements } from './constants';
 import './styles.css';
@@ -37,7 +37,7 @@ export default function SB({ url }: { url: string }) {
           }
           id={element.id}
           label={element.label}
-          href={element.href}
+          href={!element.onClick && url !== '/' ? element.href : '/'}
         />
       ))}
     </Sidebar>

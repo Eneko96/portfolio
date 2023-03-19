@@ -1,8 +1,8 @@
-import { useRef } from 'react'
-import './styles.css'
+import { useRef } from 'react';
+import './styles.css';
 
 export const PreFooter = () => {
-  const ref = useRef<HTMLAnchorElement>(null)
+  const ref = useRef<HTMLAnchorElement>(null);
   return (
     <div className="prefooter-container">
       <div className="prefooter">
@@ -12,15 +12,16 @@ export const PreFooter = () => {
           hesitate. Come in and book a call with me!
         </p>
         <button
-          className="button-primary_large"
+          className="button-primary large"
+          style={{ minWidth: 'calc(20 * var(--unit))' }}
           onClick={() => {
-            ref.current?.click()
+            ref.current?.click();
           }}
         >
-          <a hidden href='/Book' ref={ref}></a>
+          <a hidden href="/Book" ref={ref}></a>
           Start <span className="material-icons">trending_flat </span>
         </button>
       </div>
     </div>
-  )
-}
+  );
+};

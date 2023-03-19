@@ -1,29 +1,30 @@
-import { useMemo, useState } from "react"
-import { Card } from "./Card"
+import { useMemo, useState } from 'react';
+import { Card } from './Card';
+import './stylesCardModulated.css';
 interface ICardModulatedProps {
-  date: Date
-  title: string
-  subtitle: string
-  description: string[]
+  date: Date;
+  title: string;
+  subtitle: string;
+  description: string[];
 }
 
 export const CardModulated: React.FC<ICardModulatedProps> = ({
   date,
   description,
   subtitle,
-  title
+  title,
 }) => {
-  const [more, setMore] = useState(false)
+  const [more, setMore] = useState(false);
   const variableDescription = useMemo(
     () =>
       description?.length > 3 && more ? description : description.slice(0, 3),
     [description, more]
-  )
+  );
 
   const toggleMore = (e: any) => {
-    e.preventDefault()
-    setMore(!more)
-  }
+    e.preventDefault();
+    setMore(!more);
+  };
 
   return (
     <Card>
@@ -32,7 +33,7 @@ export const CardModulated: React.FC<ICardModulatedProps> = ({
           Intl.DateTimeFormat('default', {
             day: '2-digit',
             month: 'short',
-            year: 'numeric'
+            year: 'numeric',
           }).format(date)}
       </small>
       <div className="case-study-title">{title}</div>
@@ -54,5 +55,5 @@ export const CardModulated: React.FC<ICardModulatedProps> = ({
         </a>
       )}
     </Card>
-  )
-}
+  );
+};

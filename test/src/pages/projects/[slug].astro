@@ -1,80 +1,76 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { marked } from 'marked';
+import { Breadcrumb, BreadcrumbItem } from '@adeccoux/tag-ds';
 import HeadLine from '../../components/HeadLine.astro';
 import { CustomChip } from '../../components/Work/Work';
-import Layout from '../../layouts/Layout.astro';
-import { BreadcrumbItem, Breadcrumb} from '@adeccoux/tag-ds/breadcrumb';
 
-interface IState {
-  title: string;
-  owner: string;
-  repo: string;
-  branch: string;
-  l_u: string;
-  ca: string;
-  topics: string[];
+export async function getStaticPaths() {
+  // get readme from github
+  const repos: any[] = await fetch(
+    'https://api.github.com/users/eneko96/repos'
+  ).then((res) => res.json());
+
+  const getReadme = async (repo: any) => {
+    const readme = await fetch(
+      `https://raw.githubusercontent.com/Eneko96/${repo.name}/main/README.md`
+    ).then((res) => res.text());
+    return readme;
+  };
+
+  const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
+
+  return repos.map((repo, idx) => {
+    return {
+      params: {
+        slug: repo.name,
+      },
+      props: {
+        id: repo.name,
+        title: repo.name,
+        name: repo.name,
+        description: repo.description,
+        url: repo.html_url,
+        created_at: repo.created_at,
+        topics: repo.topics,
+        languages: [
+          {
+            name: 'JavaScript',
+            color: '#f1e05a',
+          },
+          {
+            name: 'TypeScript',
+            color: '#2b7489',
+          },
+          {
+            name: 'CSS',
+            color: '#563d7c',
+          },
+          {
+            name: 'HTML',
+            color: '#e34c26',
+          },
+        ],
+        content: marked.parse(readmes[idx], {
+          breaks: true,
+          gfm: true,
+          headerIds: true,
+        }),
+      },
+    };
+  });
 }
-
-const { searchParams } = Astro.url;
-const state = Object.fromEntries(searchParams.entries()) as unknown as IState;
-
-const getLanguages = async (languages_url: string) => {
-  const res = await fetch(languages_url);
-  const data = await res.json();
-  return data;
-};
-
-const getReadme = async () => {
-  const res = await fetch(
-    `https://raw.githubusercontent.com/${state.owner}/${state.repo}/${state.branch}/README.md`
-  );
-  const data = await res.text();
-  return data;
-};
-
-const { readme, languages } = await Promise.all([
-  getReadme(),
-  getLanguages(state.l_u),
-]).then((data) => {
-  let readme = data[0];
-  let languages = data[1];
-  return { readme, languages };
-});
-
-export const headerRenderer = (text: string, level: 2 | 1 | 3 | 4 | 5 | 6) => {
-  const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-  if (level === 2) {
-    return `<div class="study-img-container" data-title=${text}>
-        <img
-          class="study-img-title"
-          src="https://picsum.photos/650"
-          alt=${text}
-        />
-      </div>`;
-  } else return `<h${level} id="${escapedText}">${text}</h${level}>`;
-};
-
-marked.use({ renderer: { heading: headerRenderer } });
-
-const VALID_PROJECT_TYPE = ['web', 'mobile', 'desktop', 'iot'];
-
-export const projectTypeParser = (projectTypes: string[]): string => {
-  const res = projectTypes.find((projectType) =>
-    VALID_PROJECT_TYPE.includes(projectType.toLowerCase())
-  );
-
-  return res ?? 'web';
-};
-
-const VALID_CLIENTS = ['myself', 'hackathon'];
-
-export const serializeClient = (clients: string[]): string => {
-  const res = clients.find((client) =>
-    VALID_CLIENTS.includes(client.toLowerCase())
-  );
-
-  return res ?? 'myself';
-};
+const {
+  id,
+  name,
+  description,
+  url,
+  content,
+  languages,
+  title,
+  topics,
+  created_at,
+} = Astro.props;
 
 const VALID_METHODOLOGIES = [
   'agile',
@@ -92,33 +88,43 @@ export const methodologyParser = (methodology: string[]): string => {
   if (res?.includes('-')) res.replaceAll('-', ' ');
   return res ?? 'agile';
 };
+
+const VALID_CLIENTS = ['myself', 'hackathon'];
+
+export const serializeClient = (clients: string[]): string => {
+  const res = clients.find((client) =>
+    VALID_CLIENTS.includes(client.toLowerCase())
+  );
+
+  return res ?? 'myself';
+};
+
+const VALID_PROJECT_TYPE = ['web', 'mobile', 'desktop', 'iot'];
+
+export const projectTypeParser = (projectTypes: string[]): string => {
+  const res = projectTypes.find((projectType) =>
+    VALID_PROJECT_TYPE.includes(projectType.toLowerCase())
+  );
+
+  return res ?? 'web';
+};
 ---
 
-<Layout title="Welcome to Projects">
+<Layout title="Title">
   <div role="main">
     <HeadLine title="Hello Welcome to my portfolio!" />
     <div class="study-header">
-      <Breadcrumb className="tag-ds" client:load>
-        <BreadcrumbItem id="1" title="Case Studies" href="#" />
-        <BreadcrumbItem id="3" title={state.title} href="#" />
+      <Breadcrumb client:visible>
+        <BreadcrumbItem id="1" title="Case Studies" href="/" />
+        <BreadcrumbItem id="2" title={name} href="#" />
       </Breadcrumb>
-      <h1 class="study-header-content">{state.title}</h1>
+      <h1 class="study-header-content">{title}</h1>
     </div>
     <div class="study-page-container">
       <div class="study-inner">
         <main class="study-inner-container-layer">
           <div class="study-inner-container-content">
-            {
-              readme && (
-                <div
-                  set:html={marked(readme, {
-                    breaks: true,
-                    gfm: true,
-                    headerIds: true,
-                  })}
-                />
-              )
-            }
+            <div set:html={content} />
           </div>
         </main>
       </div>
@@ -127,7 +133,7 @@ export const methodologyParser = (methodology: string[]): string => {
           <div class="study-right-side-element">
             <small>Client</small>
             <p class="study-topic-element">
-              {serializeClient(state.topics || [])}
+              {serializeClient(topics)}
             </p>
           </div>
 
@@ -138,7 +144,7 @@ export const methodologyParser = (methodology: string[]): string => {
                 Intl.DateTimeFormat('default', {
                   month: 'short',
                   year: 'numeric',
-                }).format(new Date(state.ca))
+                }).format(new Date(created_at))
               }
             </p>
           </div>
@@ -146,7 +152,7 @@ export const methodologyParser = (methodology: string[]): string => {
           <div class="study-right-side-element">
             <small>Type of Project</small>
             <p class="study-topic-element">
-              {projectTypeParser(state.topics || [])}
+              {projectTypeParser(topics)}
             </p>
           </div>
 
@@ -156,7 +162,9 @@ export const methodologyParser = (methodology: string[]): string => {
               languages ? (
                 <div class="study-tech-stack">
                   {Object.keys(languages).map((lang, idx) => (
-                    <CustomChip key={idx + lang}>{lang} </CustomChip>
+                    <CustomChip client:visible key={idx + lang}>
+                      {lang}{' '}
+                    </CustomChip>
                   ))}
                 </div>
               ) : (
@@ -168,13 +176,14 @@ export const methodologyParser = (methodology: string[]): string => {
           <div class="study-right-side-element">
             <small>Methodology</small>
             <p class="study-topic-element">
-              {methodologyParser(state.topics || [])}
+              {methodologyParser(topics)}
             </p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <!-- {astro.html} -->
 </Layout>
 
 <style>
