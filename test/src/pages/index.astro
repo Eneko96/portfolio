@@ -1,11 +1,12 @@
 ---
-import CaseStudies from '../components/CaseStudies.astro'
-import HeadLine from '../components/HeadLine.astro'
-import Section from '../components/Section.astro'
-import Stack from '../components/Stack.astro'
-import Studies from '../components/Studies.astro'
-import Layout from '../layouts/Layout.astro'
-import { supabase } from '../supabase'
+import { BreadcrumbItem, Breadcrumb } from '@adeccoux/tag-ds';
+import CaseStudies from '../components/CaseStudies.astro';
+import HeadLine from '../components/HeadLine.astro';
+import Section from '../components/Section.astro';
+import Stack from '../components/Stack.astro';
+import Studies from '../components/Studies.astro';
+import Layout from '../layouts/Layout.astro';
+import { supabase } from '../supabase';
 
 const { data: baseData } = await supabase
   .from('greeting')
@@ -40,7 +41,7 @@ const { data: baseData } = await supabase
     `
   )
   .order('id', { foreignTable: 'work_v2', ascending: true })
-  .single()
+  .single();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -86,7 +87,7 @@ const { data: baseData } = await supabase
   </main>
 </Layout>
 
-<style global>
+<style is:global>
   .home-container {
     margin: 39px auto 0;
     max-width: 1024px;
@@ -138,8 +139,11 @@ const { data: baseData } = await supabase
 </style>
 <style is:global>
   @media (max-width: 768px) {
-      .separator {
+    .separator {
       margin-top: 40px;
     }
+  }
+  html {
+    scroll-behavior: smooth;
   }
 </style>

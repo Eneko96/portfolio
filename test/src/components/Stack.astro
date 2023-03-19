@@ -1,16 +1,16 @@
 ---
-const { baseData } = Astro.props
+const { baseData } = Astro.props;
 const stackList = () => {
   if (baseData) {
-    const { tech_stack } = baseData
-    const { id, greeting_id, created_at, ...rest } = tech_stack[0]
-    return rest
+    const { tech_stack } = baseData;
+    const { id, greeting_id, created_at, ...rest } = tech_stack[0];
+    return rest;
   }
-  return []
-}
+  return [];
+};
 ---
 
-<div id="teckstack">
+<div id="techstack">
   <h2>Tech Stack</h2>
   <div class="tech-stack-container">
     {
@@ -29,15 +29,15 @@ const stackList = () => {
               <div
                 style={{
                   textAlign: 'center',
-                  textTransform: 'capitalize'
+                  textTransform: 'capitalize',
                 }}
                 class="small"
               >
                 {entry[0]}
               </div>
             </div>
-          )
-        return null
+          );
+        return null;
       })
     }
   </div>

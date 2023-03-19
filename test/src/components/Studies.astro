@@ -1,13 +1,12 @@
 ---
-import { CardModulated } from './Card/CardModulated'
-import Space from './Space.astro'
+import { CardModulated } from './Card/CardModulated';
+import Space from './Space.astro';
 
 interface Props {
-  data: any[]
+  data: any[];
 }
 
-const { data } = Astro.props
-console.log(data)
+const { data } = Astro.props;
 ---
 
 <div class="study-container" id="studies">
@@ -34,45 +33,46 @@ console.log(data)
   </div>
   {/* <SeeMore className="study-see-more" />  By the moment not show */}
 </div>
-<style>.case-study-date {
-  text-transform: uppercase;
-  display: block;
-  margin: 0 24px 24px 16px;
-  text-align: right;
-  color: var(--neutral700);
-  padding-top: 16px;
-}
-
-.case-study-position {
-  margin-top: 8px;
-}
-
-.case-study-description {
-  color: var(--neutral700);
-  animation: scaleit .5s;
-  margin-top: 8px;
-}
-
-.study-title {
-  margin-bottom: 40px !important;  
-}
-
-.study-see-more {
-  margin-top: 72px;
-}
-
-.case-study-title {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 32px;
-}
-
-@media (max-width: 768px) {
-  .cert-ref-container {
-    margin: auto;
+<style>
+  .case-study-date {
+    text-transform: uppercase;
+    display: block;
+    margin: 0 24px 24px 16px;
+    text-align: right;
+    color: var(--neutral700);
+    padding-top: 16px;
   }
-}
-.study-container {
+
+  .case-study-position {
+    margin-top: 8px;
+  }
+
+  .case-study-description {
+    color: var(--neutral700);
+    animation: scaleit 0.5s;
+    margin-top: 8px;
+  }
+
+  .study-title {
+    margin-bottom: 40px !important;
+  }
+
+  .study-see-more {
+    margin-top: 72px;
+  }
+
+  .case-study-title {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  @media (max-width: 768px) {
+    .cert-ref-container {
+      margin: auto;
+    }
+  }
+  .study-container {
     display: flex;
     flex-direction: column;
     margin-top: 72px;

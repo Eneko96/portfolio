@@ -4,12 +4,11 @@ interface IuseEvent {
   type: string
   listener: (...args: any[]) => void
   origin: 'window' | 'document' | 'documentBody'
-  depA?: any[]
 }
 
-type TuseEvent = ({ type, listener, origin, depA }: IuseEvent) => void
+type TuseEvent = ({ type, listener, origin }: IuseEvent, ...deps: any[]) => void
 
-export const useEvent: TuseEvent = ({ type, listener, origin, depA }) => {
+export const useEvent: TuseEvent = ({ type, listener, origin }, ...deps) => {
   const target = {
     window,
     document,
@@ -20,5 +19,5 @@ export const useEvent: TuseEvent = ({ type, listener, origin, depA }) => {
   useEffect(() => {
     target.addEventListener(type, listener)
     return () => target.removeEventListener(type, listener)
-  }, [depA])
+  }, [deps])
 }

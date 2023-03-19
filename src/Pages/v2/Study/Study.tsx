@@ -40,12 +40,15 @@ export const Study = () => {
   let isScrolling: any
   const { layoutWidth } = useLayoutWidth({ dynamic: false })
 
-  useEvent({
-    listener: () => shadowHandler({ isScrolling, studyRightRef, layoutWidth }),
-    type: 'scroll',
-    origin: 'documentBody',
-    depA: [layoutWidth]
-  })
+  useEvent(
+    {
+      listener: () =>
+        shadowHandler({ isScrolling, studyRightRef, layoutWidth }),
+      type: 'scroll',
+      origin: 'documentBody'
+    },
+    [layoutWidth]
+  )
 
   usePromiseAll({
     promise: [getReadme(state), getLanguages(state)],

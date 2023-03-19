@@ -1,26 +1,26 @@
-import './styles.css'
+import './styles.css';
 
 interface Work_V2Props {
-  client: string
-  date: string
-  projectType: string
-  description: string[]
-  id: string
-  tech_stack: string[]
+  client: string;
+  date: string;
+  projectType: string;
+  description: string[];
+  id: string;
+  tech_stack: string[];
 }
 
-export const CustomChip: React.FC<any> = ({ children, className }) => (
-  <small title={children} className={`custom-chip ${className ?? ''}`}>
+export const CustomChip: React.FC<any> = ({ children, className, title }) => (
+  <small title={title} className={`custom-chip ${className ?? ''}`}>
     {children}
   </small>
-)
+);
 
 export const WorkV2: React.FC<Work_V2Props> = ({
   client,
   date,
   projectType,
   description,
-  tech_stack
+  tech_stack,
 }) => {
   return (
     <div className="workv2-container">
@@ -56,17 +56,11 @@ export const WorkV2: React.FC<Work_V2Props> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const Work = ({ data }: { data: any[] }) => {
-  return (
-    data.map(({ project_type: projectType, ...rest }, index) => (
-      <WorkV2
-        key={index + 'work-section'}
-        projectType={projectType}
-        {...rest}
-      />
-    ))
-  )
-}
+  return data.map(({ project_type: projectType, ...rest }, index) => (
+    <WorkV2 key={index + 'work-section'} projectType={projectType} {...rest} />
+  ));
+};
