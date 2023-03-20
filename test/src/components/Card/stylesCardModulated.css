@@ -1,3 +1,23 @@
+.card-modulated {
+  max-height: 333px;
+  transition: max-height 0.5s ease;
+  overflow: hidden;
+}
+
+.card-modulated.expanded {
+  max-height: 700px;
+}
+
+.case-study-description-container {
+  max-height: 113px;
+  transition: max-height 0.5s ease;
+  overflow: hidden;
+}
+
+.case-study-description-container.expanded {
+  max-height: 500px;
+}
+
 .case-study-date {
   text-transform: uppercase;
   display: block;
@@ -13,7 +33,7 @@
 
 .case-study-description {
   color: var(--neutral700);
-  animation: scaleit .5s;
+  /* animation: scaleit .5s; */
   margin-top: 8px;
 }
 

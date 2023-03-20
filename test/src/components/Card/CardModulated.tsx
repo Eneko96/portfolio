@@ -27,7 +27,7 @@ export const CardModulated: React.FC<ICardModulatedProps> = ({
   };
 
   return (
-    <Card>
+    <Card className={`card-modulated${more ? ' expanded' : ''}`}>
       <small className="case-study-date">
         {date &&
           Intl.DateTimeFormat('default', {
@@ -38,9 +38,11 @@ export const CardModulated: React.FC<ICardModulatedProps> = ({
       </small>
       <div className="case-study-title">{title}</div>
       <div className="base case-study-position">{subtitle}</div>
-      <div className="case-study-description-container">
-        {variableDescription.length &&
-          variableDescription.map((desc, idx) => (
+      <div
+        className={`case-study-description-container${more ? ' expanded' : ''}`}
+      >
+        {description.length &&
+          description.map((desc, idx) => (
             <p
               className="case-study-description"
               key={idx + 'case-study-description'}
