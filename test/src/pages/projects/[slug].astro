@@ -1,9 +1,13 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { marked } from 'marked';
-import { Breadcrumb, BreadcrumbItem } from '@adeccoux/tag-ds';
+import Breadcrumb from '../../components/Breadcrumb/index.astro';
+import BreadcrumbItem from '../../components/Breadcrumb/Item.astro';
 import HeadLine from '../../components/HeadLine.astro';
 import { CustomChip } from '../../components/Work/Work';
+import { serializeClient } from '../../utils/client';
+import { projectTypeParser } from '../../utils/projectType';
+import { methodologyParser } from '../../utils/methodologies';
 
 export async function getStaticPaths() {
   // get readme from github
@@ -71,50 +75,13 @@ const {
   topics,
   created_at,
 } = Astro.props;
-
-const VALID_METHODOLOGIES = [
-  'agile',
-  'scrum',
-  'kanban',
-  'waterfall',
-  'lean',
-  'domain-driven-development',
-];
-
-export const methodologyParser = (methodology: string[]): string => {
-  const res = methodology.find((methodology) =>
-    VALID_METHODOLOGIES.includes(methodology.toLowerCase())
-  );
-  if (res?.includes('-')) res.replaceAll('-', ' ');
-  return res ?? 'agile';
-};
-
-const VALID_CLIENTS = ['myself', 'hackathon'];
-
-export const serializeClient = (clients: string[]): string => {
-  const res = clients.find((client) =>
-    VALID_CLIENTS.includes(client.toLowerCase())
-  );
-
-  return res ?? 'myself';
-};
-
-const VALID_PROJECT_TYPE = ['web', 'mobile', 'desktop', 'iot'];
-
-export const projectTypeParser = (projectTypes: string[]): string => {
-  const res = projectTypes.find((projectType) =>
-    VALID_PROJECT_TYPE.includes(projectType.toLowerCase())
-  );
-
-  return res ?? 'web';
-};
 ---
 
 <Layout title="Title">
   <div role="main">
     <HeadLine title="Hello Welcome to my portfolio!" />
     <div class="study-header">
-      <Breadcrumb client:visible>
+      <Breadcrumb>
         <BreadcrumbItem id="1" title="Case Studies" href="/" />
         <BreadcrumbItem id="2" title={name} href="#" />
       </Breadcrumb>
@@ -259,6 +226,30 @@ export const projectTypeParser = (projectTypes: string[]): string => {
 
   .study-right-side {
     transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .study-right-side {
+    flex: 0.1 0 528px;
+    padding: 48px 92px;
+    /* box-shadow: 4px 8px 16px rgba(28, 48, 75, 0.08); */
+    margin-left: 32px;
+  }
+
+  .study-right-side-container {
+    position: sticky;
+    top: 128px;
+  }
+
+  .study-right-side-element {
+    margin-bottom: 24px;
+  }
+
+  .study-right-side-element > small {
+    text-transform: uppercase;
+  }
+
+  .study-right-side-element > p {
+    margin-top: 8px;
   }
 
   @media (max-width: 768px) {

@@ -1,0 +1,7 @@
+---
+const { className, ...rest } = Astro.props;
+---
+
+<div class={`breadcrumb-container ${className || ''}`} {...rest}>
+  <slot />
+</div>

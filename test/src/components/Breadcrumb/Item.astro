@@ -1,0 +1,31 @@
+---
+const { id, title, href, ...rest } = Astro.props;
+---
+
+<a
+  href={href || '#'}
+  target="_self"
+  id={id}
+  data-testid={rest && rest['data-testid']
+    ? `${rest['data-testid']}-link`
+    : undefined}
+  class="breadcrumb-item custom"
+  {...rest}
+>
+  {title.length > 30 ? title.substring(0, 30) + '...' : title}
+</a>
+
+<style>
+  .custom:not(:last-child):after {
+    font-family: 'material icons';
+    content: '\e5cc';
+    cursor: default;
+    font-size: calc(2 * var(--unit));
+    margin: calc(var(--unit) / 8) calc(var(--unit) / 8) 0 calc(var(--unit) / 8);
+    pointer-events: none;
+  }
+
+  .custom:not(:last-child):hover:after {
+    color: var(--text-02);
+  }
+</style>
