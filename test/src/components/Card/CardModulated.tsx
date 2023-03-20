@@ -15,11 +15,11 @@ export const CardModulated: React.FC<ICardModulatedProps> = ({
   title,
 }) => {
   const [more, setMore] = useState(false);
-  const variableDescription = useMemo(
-    () =>
-      description?.length > 3 && more ? description : description.slice(0, 3),
-    [description, more]
-  );
+  // const variableDescription = useMemo(
+  //   () =>
+  //     description?.length > 3 && more ? description : description.slice(0, 3),
+  //   [description, more]
+  // );
 
   const toggleMore = (e: any) => {
     e.preventDefault();
