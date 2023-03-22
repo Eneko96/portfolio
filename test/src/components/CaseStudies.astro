@@ -30,7 +30,7 @@ export interface IRepos {
 
 const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app'];
 
-const repos = await fetch(import.meta.env.VITE_GITHUB_URI);
+const repos = await fetch(import.meta.env.GITHUB_URI);
 const res: IRepos[] = await repos.json();
 ---
 
