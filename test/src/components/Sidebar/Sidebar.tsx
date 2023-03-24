@@ -1,4 +1,4 @@
-import { SidebarButton, Sidebar } from '@adeccoux/tag-ds';
+import Sidebar, { SidebarButton } from '@adeccoux/tag-ds/sidebar';
 import { useState } from 'react';
 import { sElements } from './constants';
 import './styles.css';

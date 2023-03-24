@@ -77,6 +77,41 @@ const {
 } = Astro.props;
 ---
 
+<script>
+  const BOX_SHADOW_CONSTRUCTOR = '4px 8px 16px rgba(28, 48, 75, 0.08)';
+
+  const isScrolling = null;
+  const layoutWidth = window.innerWidth < 768 ? 'mobile' : 'desktop';
+  const studyRightRef = document.querySelector(
+    '.study-right-side'
+  )! as HTMLElement;
+
+  const shadowHandler = ({
+    isScrolling,
+    layoutWidth,
+    studyRightRef,
+  }: {
+    isScrolling: any;
+    layoutWidth: string;
+    studyRightRef: HTMLElement;
+  }) => {
+    window.clearTimeout(isScrolling);
+    if (
+      layoutWidth === 'desktop' &&
+      studyRightRef &&
+      Boolean(studyRightRef.style.boxShadow) === false
+    ) {
+      studyRightRef.style.boxShadow = BOX_SHADOW_CONSTRUCTOR;
+    }
+    isScrolling = setTimeout(() => {
+      studyRightRef.style.boxShadow = '';
+    }, 500);
+  };
+  document.addEventListener('scroll', () =>
+    shadowHandler({ studyRightRef, isScrolling, layoutWidth })
+  );
+</script>
+
 <Layout title="Title">
   <div role="main">
     <HeadLine title="Hello Welcome to my portfolio!" />
