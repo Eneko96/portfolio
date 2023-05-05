@@ -35,7 +35,8 @@ const AppProviderV2: React.FC<any> = ({ children }) => {
         date,
         project_type,
         description,
-        tech_stack
+        tech_stack,
+        intern_date
       ),
       projects_v2 (
         id

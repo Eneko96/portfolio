@@ -12,7 +12,20 @@ export const Section = () => {
   if (baseData) {
     const { work_v2 } = baseData
     const workData = useMemo(
-      () => (more ? work_v2 : work_v2.slice(0, 3)),
+      () =>
+        more
+          ? work_v2.sort(
+              (a, b) =>
+                new Date(b.intern_date).getTime() -
+                new Date(a.intern_date).getTime()
+            )
+          : work_v2
+              .sort(
+                (a, b) =>
+                  new Date(b.intern_date).getTime() -
+                  new Date(a.intern_date).getTime()
+              )
+              .slice(0, 3),
       [work_v2, more]
     )
     return (

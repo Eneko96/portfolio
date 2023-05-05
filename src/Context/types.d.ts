@@ -19,6 +19,7 @@ export interface IWorks {
   project_type: string
   description: string[]
   tech_stack: string[]
+  intern_date: string
 }
 
 export interface ICertRef {

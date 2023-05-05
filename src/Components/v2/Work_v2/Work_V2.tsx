@@ -8,6 +8,7 @@ interface Work_V2Props {
   description: string[]
   id: string
   tech_stack: string[]
+  intern_date?: string
 }
 
 export const WorkV2: React.FC<Work_V2Props> = ({
