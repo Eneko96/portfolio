@@ -78,7 +78,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             className={selected === 'button2' ? 'selected' : ''}
             icon={<Icons.LocationIcon active={selected === 'button2'} />}
             id="button2"
-            href="#"
+            href=""
             label="About"
             onPressed={() => {
               setSelected('button2')
@@ -92,7 +92,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             icon={<Icons.WorkIcon active={selected === 'button3'} />}
             className={selected === 'button3' ? 'selected' : ''}
             id="button3"
-            href="#"
+            href=""
             label="Work"
             onPressed={() => {
               setSelected('button3')
@@ -105,7 +105,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             icon={<Icons.BookIcon active={selected === 'button4'} />}
             className={selected === 'button4' ? 'selected' : ''}
             id="button4"
-            href="#"
+            href=""
             label="Studies"
             onPressed={() => {
               setSelected('button4')
@@ -118,7 +118,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             icon={<Icons.ViewIcon active={selected === 'button5'} />}
             className={selected === 'button5' ? 'selected' : ''}
             id="button5"
-            href="#"
+            href=""
             label="Tech Stack"
             onPressed={() => {
               setSelected('button5')
@@ -131,7 +131,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             icon={<Icons.FolderIcon active={selected === 'button6'} />}
             className={selected === 'button6' ? 'selected' : ''}
             id="button6"
-            href="#"
+            href=""
             label="Case Studies"
             onPressed={() => {
               setSelected('button6')
@@ -146,7 +146,7 @@ export const Layout: React.FC<any> = ({ children }) => {
             className={selected === 'button8' ? 'selected' : ''}
             id="button8"
             label="Book a Call"
-            href="#"
+            href=""
             onPressed={() => {
               setSelected('button8')
               if (isMobile) setOpen(false)
@@ -155,7 +155,7 @@ export const Layout: React.FC<any> = ({ children }) => {
           />
           <SidebarButton
             key={8}
-            href="#"
+            href=""
             icon={<Icons.DownloadIcon active={selected === 'button9'} />}
             className={selected === 'button9' ? 'selected' : ''}
             id="button9"

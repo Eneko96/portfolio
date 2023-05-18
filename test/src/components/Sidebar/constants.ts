@@ -3,7 +3,7 @@ const onClick = (cb: any) => cb;
 
 interface SidebarElement {
   id: string;
-  href: string;
+  href?: string;
   label: string;
   icon: any;
   onClick?: (cb: any) => void;
@@ -12,14 +12,12 @@ interface SidebarElement {
 export const sElements: SidebarElement[] = [
   {
     id: 'button2',
-    href: '/',
     label: 'About',
     onClick,
     icon: Icons.LocationIcon,
   },
   {
     id: 'button3',
-    href: '/',
     // should have on click to scroll to work section
     onClick,
     label: 'Work',
@@ -27,21 +25,18 @@ export const sElements: SidebarElement[] = [
   },
   {
     id: 'button4',
-    href: '/',
     label: 'Studies',
     onClick,
     icon: Icons.BookIcon,
   },
   {
     id: 'button5',
-    href: '/techstack',
     label: 'Tech Stack',
     onClick,
     icon: Icons.ViewIcon,
   },
   {
     id: 'button6',
-    href: '/',
     label: 'Case Studies',
     onClick,
     icon: Icons.FolderIcon,

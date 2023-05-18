@@ -14,6 +14,14 @@ export default function SB({ url }: { url: string }) {
   const [selected, setSelected] = useState(
     sElements.find((e) => e.href === url)?.id || 'button2'
   );
+  sElements.forEach((e) => {
+    console.log(e.href, url, !!e.onClick, !e.onClick && url !== '/');
+  });
+
+  const handleHref = (elem: typeof sElements) => {
+    if (elem)
+  }
+
   return (
     <Sidebar collapsed className="sidebar-custom">
       {sElements.map(({ icon: Icon, ...element }, idx) => (
@@ -37,7 +45,7 @@ export default function SB({ url }: { url: string }) {
           }
           id={element.id}
           label={element.label}
-          href={!element.onClick && url !== '/' ? element.href : '/'}
+          href={!element.onClick ? element.href : undefined}
         />
       ))}
     </Sidebar>
