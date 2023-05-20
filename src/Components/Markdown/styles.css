@@ -1,8 +1,0 @@
-.markdown {
-  height: 500px;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto;
-}
-
-.markdown a {
-  color: var(--primary);
-}

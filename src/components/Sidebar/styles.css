@@ -1,0 +1,20 @@
+.sidebar-custom {
+  z-index: 3;
+}
+
+.focuser {
+  position: absolute;
+  top: 98px;
+  left: 0;
+  width: calc(var(--unit) / 2);
+  height: 38px;
+  background-color: var(--accentColor);
+  border-top-right-radius: var(--unit);
+  border-bottom-right-radius: var(--unit);
+  content: '';
+  transition: all 0.2s ease-in-out;
+}
+
+.sidebar-button_selected::before {
+  display: none;
+}
