@@ -16,10 +16,19 @@ export async function getStaticPaths() {
   ).then((res) => res.json());
 
   const getReadme = async (repo: any) => {
-    const readme = await fetch(
-      `https://raw.githubusercontent.com/Eneko96/${repo.name}/main/README.md`
-    ).then((res) => res.text());
-    return readme;
+      try {
+          const readme = await fetch(
+                  `https://raw.githubusercontent.com/Eneko96/${repo.name}/main/README.md`
+                  );
+          if (!readme.ok) {
+              throw new Error(`Could not fetch README for this one ${repo.name}`)
+          }
+          const readmeText = await readme.text();
+          return readmeText;
+      } catch (err) {
+          console.error(`Failed to fetch or parse README for ${repo.name}`);
+          return ''
+      }
   };
 
   const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));

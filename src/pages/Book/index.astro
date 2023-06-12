@@ -1,18 +1,104 @@
 ---
 import Layout from '../../layouts/Layout.astro'
+import HeadLine from '../../Components/Headline.astro'
+import BookSelector from '../../Components/BookSelector'
+import { Input, TextArea, Radio } from '../../components/Input/Input'
+const salaryRanges = ["10, 20, 30"]
 ---
 
 <Layout title="Welcome to Astro.">
-  <main>
-    <h1>Welcome to <span class="text-gradient">Astro</span></h1>
-    <p class="instructions">
-      To get started, open the directory <code>src/pages</code> in your project.<br
-      />
-      <strong>Code Challenge:</strong> Tweak the "Welcome to Astro" message above.
-    </p>
-    <ul role="list" class="link-card-grid"></ul>
-  </main>
-</Layout>
+ <div role="main">
+      <HeadLine title="Nice to e-meet you!" />
+      <div className="book-title">
+        <h2>Book a Call</h2>
+        <p>
+        Would you like to chat and get to know me a bit better? Don&apos;t
+        hesitate. Come in and book a call with me!
+        </p>
+      </div>
+
+      <form
+        className="book-form"
+      >
+        <div className="book-form-name-surname">
+          <Input
+            label="Name"
+            required
+            name="name"
+          />
+          <Input
+            client:load 
+            label="Surname"
+            required
+            name="surname"
+          />
+        </div>
+
+        <Input
+          label="Email"
+          required
+          name="email"
+          type="email"
+        />
+        <Input
+          label="Company Name"
+          required
+          name="company_name"
+        />
+
+        <div className="tag-ds input-wrapper">
+          <label className="caption">
+            Position you want to hire me for
+            <small>*</small>
+          </label>
+          <select placeholder="Select Option" name="position">
+            <option value="Front End Developer">Front End Developer</option>
+            <option value="UX/UI Developer">UX/UI Developer</option>
+            <option value="Full Stack Developer">Full Stack Developer</option>
+          </select>
+          <div className="material-icons select-icon">expand_more</div>
+        </div>
+
+        <TextArea label="Something else about" name="additional_information" />
+
+        <div>
+          <label className="caption">Anual Salary Range</label>
+          <div className="book-radio-grouper">
+            {salaryRanges.map((salary, idx) => (
+              <Radio
+                name="anual_revenue"
+                label={salary.label}
+                value={salary.value}
+                key={idx + salary.value}
+              />
+            ))}
+            <Radio name="anual_revenue" label="More" />
+          </div>
+        </div>
+
+        <BookSelector />
+
+        <button
+          className="button large"
+          style={{ width: 'fit-content' }}
+        >
+          Book
+        </button>
+        <ReCaptcha
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+        />
+
+        <p className="book-recopilation-message">
+          I am not saving any of this details. By clicking book you are just
+          booking a call (:
+        </p>
+      </form>
+      <Notification show={show} setShow={setShow} success renderAsPortal>
+        The reservation has been successfully requested! Soon will you will
+        recieve a google meet invitation! I am looking forward to talk with you!
+      </Notification>
+    </div>
+    </Layout>
 <style>
   main {
     margin: auto;
