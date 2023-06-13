@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/select",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./select.d.ts"
+}

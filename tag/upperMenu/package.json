@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/upperMenu",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./upperMenu.d.ts"
+}

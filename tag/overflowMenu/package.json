@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/overflowMenu",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./overflowMenu.d.ts"
+}

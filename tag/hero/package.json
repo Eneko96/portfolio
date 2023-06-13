@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/hero",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./hero.d.ts"
+}

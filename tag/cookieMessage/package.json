@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/cookieMessage",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./cookieMessage.d.ts"
+}

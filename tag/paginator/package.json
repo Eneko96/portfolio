@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/paginator",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./paginator.d.ts"
+}

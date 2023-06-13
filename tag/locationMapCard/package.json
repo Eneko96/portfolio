@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/locationMapCard",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./locationMapCard.d.ts"
+}

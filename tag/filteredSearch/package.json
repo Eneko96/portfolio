@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/filteredSearch",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./filteredSearch.d.ts"
+}

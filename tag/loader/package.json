@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/loader",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./loader.d.ts"
+}

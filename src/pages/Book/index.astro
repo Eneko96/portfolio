@@ -1,104 +1,99 @@
 ---
-import Layout from '../../layouts/Layout.astro'
-import HeadLine from '../../Components/Headline.astro'
-import BookSelector from '../../Components/BookSelector'
-import { Input, TextArea, Radio } from '../../components/Input/Input'
-const salaryRanges = ["10, 20, 30"]
+import Layout from '../../layouts/Layout.astro';
+import HeadLine from '../../components/HeadLine.astro';
+import { BookSelector } from '../../components/BookSelector';
+import { Input, TextArea, Radio } from '../../components/Input/Input';
+import { Notification } from '../../../tag';
+const salaryRanges = [
+  {
+    label: 'Less than 30.000€',
+    value: 'less_than_30k',
+  },
+  {
+    label: 'Between 30.000€ and 50.000€',
+    value: 'between_30k_and_50k',
+  },
+  {
+    label: 'Between 50.000€ and 70.000€',
+    value: 'between_50k_and_70k',
+  },
+  {
+    label: 'Between 70.000€ and 90.000€',
+    value: 'between_70k_and_90k',
+  },
+];
 ---
 
 <Layout title="Welcome to Astro.">
- <div role="main">
-      <HeadLine title="Nice to e-meet you!" />
-      <div className="book-title">
-        <h2>Book a Call</h2>
-        <p>
+  <div role="main">
+    <HeadLine title="Nice to e-meet you!" />
+    <div className="book-title">
+      <h2>Book a Call</h2>
+      <p>
         Would you like to chat and get to know me a bit better? Don&apos;t
         hesitate. Come in and book a call with me!
-        </p>
+      </p>
+    </div>
+
+    <form className="book-form">
+      <div className="book-form-name-surname">
+        <Input client:load label="Name" required name="name" />
+        <Input client:load client:load label="Surname" required name="surname" />
       </div>
 
-      <form
-        className="book-form"
-      >
-        <div className="book-form-name-surname">
-          <Input
-            label="Name"
-            required
-            name="name"
-          />
-          <Input
-            client:load 
-            label="Surname"
-            required
-            name="surname"
-          />
-        </div>
+      <Input client:load label="Email" required name="email" type="email" />
+      <Input client:load label="Company Name" required name="company_name" />
 
-        <Input
-          label="Email"
-          required
-          name="email"
-          type="email"
-        />
-        <Input
-          label="Company Name"
-          required
-          name="company_name"
-        />
+      <div className="tag-ds input-wrapper">
+        <label className="caption">
+          Position you want to hire me for
+          <small>*</small>
+        </label>
+        <select placeholder="Select Option" name="position">
+          <option value="Front End Developer">Front End Developer</option>
+          <option value="UX/UI Developer">UX/UI Developer</option>
+          <option value="Full Stack Developer">Full Stack Developer</option>
+        </select>
+        <div className="material-icons select-icon">expand_more</div>
+      </div>
 
-        <div className="tag-ds input-wrapper">
-          <label className="caption">
-            Position you want to hire me for
-            <small>*</small>
-          </label>
-          <select placeholder="Select Option" name="position">
-            <option value="Front End Developer">Front End Developer</option>
-            <option value="UX/UI Developer">UX/UI Developer</option>
-            <option value="Full Stack Developer">Full Stack Developer</option>
-          </select>
-          <div className="material-icons select-icon">expand_more</div>
-        </div>
+      <TextArea client:only  label="Something else about" name="additional_information" />
 
-        <TextArea label="Something else about" name="additional_information" />
-
-        <div>
-          <label className="caption">Anual Salary Range</label>
-          <div className="book-radio-grouper">
-            {salaryRanges.map((salary, idx) => (
+      <div>
+        <label className="caption">Anual Salary Range</label>
+        <div className="book-radio-grouper">
+          {
+            salaryRanges.map((salary, idx) => (
               <Radio
                 name="anual_revenue"
                 label={salary.label}
                 value={salary.value}
                 key={idx + salary.value}
               />
-            ))}
-            <Radio name="anual_revenue" label="More" />
-          </div>
+            ))
+          }
+          <Radio name="anual_revenue" label="More" />
         </div>
+      </div>
 
-        <BookSelector />
+      <BookSelector client:load />
 
-        <button
-          className="button large"
-          style={{ width: 'fit-content' }}
-        >
-          Book
-        </button>
-        <ReCaptcha
-          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
-        />
+      <button className="button large" style={{ width: 'fit-content' }}>
+        Book
+      </button>
+      <!-- <ReCaptcha sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} /> -->
 
-        <p className="book-recopilation-message">
-          I am not saving any of this details. By clicking book you are just
-          booking a call (:
-        </p>
-      </form>
-      <Notification show={show} setShow={setShow} success renderAsPortal>
-        The reservation has been successfully requested! Soon will you will
-        recieve a google meet invitation! I am looking forward to talk with you!
-      </Notification>
-    </div>
-    </Layout>
+      <p className="book-recopilation-message">
+        I am not saving any of this details. By clicking book you are just
+        booking a call (:
+      </p>
+    </form>
+    <Notification client:load success renderAsPortal>
+      The reservation has been successfully requested! Soon will you will
+      recieve a google meet invitation! I am looking forward to talk with you!
+    </Notification>
+  </div>
+</Layout>
 <style>
   main {
     margin: auto;

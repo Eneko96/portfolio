@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/figureCard",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./figureCard.d.ts"
+}

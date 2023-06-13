@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/dropdown",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./dropdown.d.ts"
+}

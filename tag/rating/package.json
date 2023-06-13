@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/rating",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./rating.d.ts"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/contentSwitcher",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./contentSwitcher.d.ts"
+}

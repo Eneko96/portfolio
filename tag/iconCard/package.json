@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/iconCard",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./iconCard.d.ts"
+}

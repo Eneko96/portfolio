@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/socialSharing",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./socialSharing.d.ts"
+}

@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/videoPreview",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./videoPreview.d.ts"
+}

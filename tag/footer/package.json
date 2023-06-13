@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/footer",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./footer.d.ts"
+}

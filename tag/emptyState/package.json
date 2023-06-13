@@ -1,0 +1,7 @@
+{
+  "name": "@adeccoux/tag-ds/emptyState",
+  "private": true,
+  "main": "./index.js",
+  "module": "./index.esm.js",
+  "types": "./emptyState.d.ts"
+}
