@@ -10,6 +10,8 @@ const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app']
 const OWNER = 'Eneko96'
 const BRANCH = 'main'
 
+const generateRandomNum = (num: number): number => Math.floor(Math.random() * num) 
+
 export const CustomChip: React.FC<any> = ({ children, className }) => (
   <small title={children} className={`custom-chip ${className ?? ''}`}>
     {children}
@@ -75,11 +77,10 @@ export const CaseStudies = () => {
                 <div className="card-img-container">
                   <img
                     className="card-img"
-                    // src={`https://raw.githubusercontent.com/${OWNER}/${name}/${BRANCH}/.github/assets/preview.png`}
                     src={
                       TEMP_NAMES.includes(name)
                         ? `/${name}.png`
-                        : 'https://picsum.photos/500?random=2.webp'
+                        : `https://picsum.photos/500?random=${generateRandomNum(memoRepos.length)}.webp`
                     }
                     alt="project-image"
                     loading="lazy"
