@@ -7,6 +7,7 @@ import './styles.css'
 import { tmpSort } from './utils/tmpSort'
 
 const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app']
+const OMIT_NAMES = ['kings-league-project', 'developer.chrome.com']
 const OWNER = 'Eneko96'
 const BRANCH = 'main'
 
@@ -42,8 +43,9 @@ export const CaseStudies = () => {
     const getRepos = async () => {
       const repos = await fetch(import.meta.env.VITE_GITHUB_URI, { signal })
       const res = await repos.json()
-      tmpSort(res)
-      setRepos(res)
+      const omitRes = res.filter((elem: IRepos) => !OMIT_NAMES.includes(elem.name))
+      tmpSort(omitRes)
+      setRepos(omitRes)
     }
     getRepos()
     return () => controller.abort()
