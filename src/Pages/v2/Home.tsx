@@ -6,7 +6,7 @@ import { HeadLine } from '@Components/v2/HeadLine/HeadLine'
 import { useAppContextV2 } from '@Context/ContextV2'
 import './styles.css'
 import { useEffect, useState } from 'react'
-import Notification from '@TagDs/components/notification/notification'
+import Notification, { NotificationHeader } from '@TagDs/components/notification/notification'
 
 export const Home = () => {
   const { baseData } = useAppContextV2()
@@ -15,6 +15,7 @@ export const Home = () => {
   useEffect(() => {
     setTimeout(() => {
       if (!localStorage.getItem('isAstroAdvertised')) setAstroApp(true)
+      localStorage.setItem('isAstroAdvertised', 'true')
     }, 5000)
   })
   if (baseData)
@@ -66,8 +67,12 @@ export const Home = () => {
             <CaseStudies />
           </div>
         </div>
-        <Notification show={astroApp} setShow={setAstroApp} info renderAsPortal>
-          Astro version of my portfolio is comming out soon! you can already check it out live in <a href='astro.enekofolio.info'>here</a>
+        <Notification icon={<span className="material-icons">info</span>} iconClose isInline show={astroApp} setShow={setAstroApp} info renderAsPortal>
+          <NotificationHeader>
+            <div style={{ display: 'inline' }}>
+              Astro version of my portfolio is comming out soon! you can already check it out live in <a href='astro.enekofolio.info'>here</a>
+            </div>
+          </NotificationHeader>
         </Notification>
       </>
     )
