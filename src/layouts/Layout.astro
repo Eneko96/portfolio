@@ -9,7 +9,6 @@ export interface Props {
 const { title } = Astro.props;
 const { pathname } = Astro.url;
 ---
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,6 +17,20 @@ const { pathname } = Astro.url;
       content="Author: Inigo Moreno,
         Personal porfolio made in Astro"
     />
+    <!-- Facebook Meta Tags -->
+    <meta property="og:url" content="https://www.astro.enekofolio.info">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Enekofolio">
+    <meta property="og:description" content="Owned portfolio for showing my content and skills">
+    <meta property="og:image" content="/public/irish.jpeg">
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:domain" content="enekofolio.info">
+    <meta property="twitter:url" content="https://www.astro.enekofolio.info">
+    <meta name="twitter:title" content="Enekofolio">
+    <meta name="twitter:description" content="Owned portfolio for showing my content and skills">
+    <meta name="twitter:image" content="/public/Logo.svg">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
