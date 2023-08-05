@@ -36,7 +36,7 @@ const res: IRepos[] = await repos.json();
 
 <div class="case-studies-container" id="casestudies">
   <h2 class="case-studies-title">Projects</h2>
-  <div class="case-studies">
+  <div class="case-studies" style=`--studies: ${res.length}`>
     {
       res.length &&
         res.map(
@@ -51,7 +51,7 @@ const res: IRepos[] = await repos.json();
             topics,
             languages_url,
           }) => (
-            <Card client:visible className="case-studies-card">
+            <Card client:visible class="case-studies-card">
               <div class="card-img-container">
                 <img
                   class="card-img"
@@ -64,7 +64,7 @@ const res: IRepos[] = await repos.json();
                   loading="lazy"
                 />
               </div>
-              <CustomChip className="custom-chip">
+              <CustomChip class="custom-chip">
                 {private_repo ? 'private' : 'public' + ' Repository'}
               </CustomChip>
               <div class="card-title">{name}</div>
@@ -87,6 +87,13 @@ const res: IRepos[] = await repos.json();
         )
     }
   </div>
+  <div class="seemore">
+    <div class="separator"></div>
+    <a style={{ whiteSpace: 'nowrap' }} id="loadMoreButton">
+      See more related works
+    </a>
+    <div class="separator"></div>
+  </div>
 </div>
 <style>
   .custom-chip {
@@ -101,6 +108,9 @@ const res: IRepos[] = await repos.json();
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 32px;
+    max-height: 450px;
+    overflow-y: hidden;
+    transition: max-height .5s ease-in-out;
   }
 
   .case-studies-card {
@@ -169,4 +179,39 @@ const res: IRepos[] = await repos.json();
       margin: auto;
     }
   }
+  .seemore {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: row;
+    gap: 72px;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    .seemore > .separator {
+      margin: auto;
+    }
+  }
+  .is-open {
+    max-height: calc(var(--studies, 1) * 444px);
+    padding-bottom: 6px;
+  }
 </style>
+<script>
+  const caseStudies = document.querySelector('.case-studies');
+  let isLoadMore = false;
+
+  const lmButton = document.querySelector('#loadMoreButton');
+
+  lmButton?.addEventListener('click', () => {
+    isLoadMore = !isLoadMore;
+    lmButton.textContent = isLoadMore
+      ? 'See less related works'
+      : 'See more related works';
+    if (isLoadMore) {
+      caseStudies?.classList.add('is-open');
+    } else {
+      caseStudies?.classList.remove('is-open');
+    }
+  });
+</script>
