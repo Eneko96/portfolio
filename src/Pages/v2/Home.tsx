@@ -70,7 +70,7 @@ export const Home = () => {
         <Notification icon={<span className="material-icons">info</span>} iconClose isInline show={astroApp} setShow={setAstroApp} info renderAsPortal>
           <NotificationHeader>
             <div style={{ display: 'inline' }}>
-              Astro version of my portfolio is comming out soon! you can already check it out live in <a href='astro.enekofolio.info'>here</a>
+              Astro version of my portfolio is comming out soon! You can already check it out live in <a href='https://astro.enekofolio.info'>here</a>
             </div>
           </NotificationHeader>
         </Notification>
