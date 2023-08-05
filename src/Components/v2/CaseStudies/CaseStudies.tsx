@@ -11,7 +11,7 @@ const OMIT_NAMES = ['kings-league-project', 'developer.chrome.com']
 const OWNER = 'Eneko96'
 const BRANCH = 'main'
 
-const generateRandomNum = (num: number): number => Math.floor(Math.random() * num) 
+const generateRandomNum = (num: number): number => Math.floor(Math.random() * num)
 
 export const CustomChip: React.FC<any> = ({ children, className }) => (
   <small title={children} className={`custom-chip ${className ?? ''}`}>
@@ -34,20 +34,30 @@ export interface IRepos {
 export const CaseStudies = () => {
   const [repos, setRepos] = useState<IRepos[]>([])
   const [more, setMore] = useState(false)
+  const [cats, setCats] = useState([])
 
   const toggleMore = () => setMore(!more)
 
   useEffect(() => {
+    let reposCount = 0;
     const controller = new AbortController()
     const { signal } = controller
     const getRepos = async () => {
       const repos = await fetch(import.meta.env.VITE_GITHUB_URI, { signal })
       const res = await repos.json()
       const omitRes = res.filter((elem: IRepos) => !OMIT_NAMES.includes(elem.name))
+      console.log(omitRes.length)
+      reposCount = omitRes.length
       tmpSort(omitRes)
       setRepos(omitRes)
     }
+    const getCats = async () => {
+      const cats = await fetch(`https://api.thecatapi.com/v1/images/search?limit=28&api_key=live_UU7j7mB39u7n3ZYZRkMWdi5dFHIAHCCkdkqPj4oWRzCspI3d7My1bKMNrVi7g87O`)
+      const res = await cats.json()
+      setCats(res)
+    }
     getRepos()
+    getCats()
     return () => controller.abort()
   }, [])
 
@@ -74,16 +84,12 @@ export const CaseStudies = () => {
               created_at,
               languages_url,
               topics
-            }) => (
+            }, idx) => (
               <Card key={id} className="case-studies-card">
                 <div className="card-img-container">
                   <img
                     className="card-img"
-                    src={
-                      TEMP_NAMES.includes(name)
-                        ? `/${name}.png`
-                        : `https://picsum.photos/500?random=${generateRandomNum(memoRepos.length)}.webp`
-                    }
+                    src={cats[idx]?.url ?? ''}
                     alt="project-image"
                     loading="lazy"
                   />
