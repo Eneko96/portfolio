@@ -17,7 +17,6 @@ export default function SB({ url }: { url: string }) {
   );
 
   useEffect(() => {
-    console.log('focuser');
     const focuser = document.getElementsByClassName('focuser');
     let focus: any;
     if (focuser.length > 0) {
