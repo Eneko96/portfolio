@@ -1,5 +1,4 @@
 ---
-import { BreadcrumbItem, Breadcrumb } from '@adeccoux/tag-ds';
 import CaseStudies from '../components/CaseStudies.astro';
 import HeadLine from '../components/HeadLine.astro';
 import Section from '../components/Section.astro';
@@ -51,19 +50,19 @@ const { data: baseData } = await supabase
       <div class="home-hero-container">
         <div class="home-hero-brief">
           <h1 class="home-hero-title">
-            I am {baseData.name}, {baseData.position}
+            I am {baseData?.name}, {baseData?.position}
           </h1>
           <div class="subtitle">Based in</div>
           <div class="base">Dublin, Ireland</div>
           <br />
           <div class="subtitle">Experience In the Following industries</div>
-          <div class="base">{baseData.experience}</div>
+          <div class="base">{baseData?.experience}</div>
           <br />
           <div class="subtitle">Core skills</div>
-          <div class="base">{baseData.skills}</div>
+          <div class="base">{baseData?.skills}</div>
           <br />
           <div class="subtitle">Cliffton Strengths</div>
-          <div class="base">{baseData.strengths}</div>
+          <div class="base">{baseData?.strengths}</div>
         </div>
         <div class="home-hero-image">
           <picture>
@@ -79,8 +78,8 @@ const { data: baseData } = await supabase
         </div>
       </div>
       <div class="separator"></div>
-      <Section data={baseData.work_v2} />
-      <Studies data={baseData.cert_ref} />
+      <Section data={baseData?.work_v2} />
+      <Studies data={baseData?.cert_ref} />
       <Stack baseData={baseData} />
       <CaseStudies />
     </div>

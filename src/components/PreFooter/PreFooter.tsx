@@ -18,7 +18,7 @@ export const PreFooter = () => {
             ref.current?.click();
           }}
         >
-          <a hidden href="/Book" ref={ref} style={{ textDecoration: 'none', color: 'white' }}>Start</a>
+          <a hidden href="/Book" ref={ref} style={{ textDecoration: 'none', color: 'white' }}>Book</a>
           <span className="material-icons">trending_flat </span>
         </button>
       </div>
