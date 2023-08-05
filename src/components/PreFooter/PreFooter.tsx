@@ -18,7 +18,7 @@ export const PreFooter = () => {
             ref.current?.click();
           }}
         >
-          <a hidden href="/Book" ref={ref}></a>
+          <a hidden href="/Book" ref={ref} style={{ textDecoration: 'none', textTransform: 'none' }}></a>
           Start <span className="material-icons">trending_flat </span>
         </button>
       </div>

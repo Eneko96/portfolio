@@ -46,6 +46,7 @@ export default function SB({ url }: { url: string }) {
       {sElements.map(({ icon: Icon, ...element }, idx) => (
         <SidebarButton
           key={element.id + idx}
+          title={element.label}
           icon={
             <Icon
               active={
@@ -66,7 +67,7 @@ export default function SB({ url }: { url: string }) {
           id={element.id}
           label={element.label}
           href={
-            !element.onClick ? element.href : (url !== '/' && '/') || undefined
+            !element.onClick ? element.href : (url !== '/' && '/') || '#'
           }
         />
       ))}
