@@ -6,12 +6,9 @@ import { SeeMore } from '../SeeMore/SeeMore'
 import './styles.css'
 import { tmpSort } from './utils/tmpSort'
 
-const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app']
 const OMIT_NAMES = ['kings-league-project', 'developer.chrome.com']
 const OWNER = 'Eneko96'
 const BRANCH = 'main'
-
-const generateRandomNum = (num: number): number => Math.floor(Math.random() * num)
 
 export const CustomChip: React.FC<any> = ({ children, className }) => (
   <small title={children} className={`custom-chip ${className ?? ''}`}>
@@ -39,23 +36,33 @@ export const CaseStudies = () => {
   const toggleMore = () => setMore(!more)
 
   useEffect(() => {
-    let reposCount = 0;
     const controller = new AbortController()
     const { signal } = controller
     const getRepos = async () => {
       const repos = await fetch(import.meta.env.VITE_GITHUB_URI, { signal })
       const res = await repos.json()
-      const omitRes = res.filter((elem: IRepos) => !OMIT_NAMES.includes(elem.name))
-      console.log(omitRes.length)
-      reposCount = omitRes.length
+      const omitRes = res.filter(
+        (elem: IRepos) => !OMIT_NAMES.includes(elem.name)
+      )
       tmpSort(omitRes)
       setRepos(omitRes)
     }
     const getCats = async () => {
-      const cats = await fetch(`https://api.thecatapi.com/v1/images/search?limit=28&api_key=live_UU7j7mB39u7n3ZYZRkMWdi5dFHIAHCCkdkqPj4oWRzCspI3d7My1bKMNrVi7g87O`)
+      const cats = await fetch(
+        `https://api.thecatapi.com/v1/images/search?limit=28&api_key=live_UU7j7mB39u7n3ZYZRkMWdi5dFHIAHCCkdkqPj4oWRzCspI3d7My1bKMNrVi7g87O`
+      )
       const res = await cats.json()
       setCats(res)
     }
+
+    Promise.all([getRepos(), getCats()]).then((res: any) => {
+      setCats(res[1] as unknown as [])
+      const omitRes = res[0].filter(
+        (elem: IRepos) => !OMIT_NAMES.includes(elem.name)
+      )
+      tmpSort(omitRes)
+      setRepos(omitRes)
+    })
     getRepos()
     getCats()
     return () => controller.abort()
@@ -74,17 +81,20 @@ export const CaseStudies = () => {
         <h2 className="case-studies-title">Projects</h2>
         <div className="case-studies">
           {memoRepos.map(
-            ({
-              id,
-              clone_url: _,
-              homepage,
-              name,
-              private_repo,
-              description,
-              created_at,
-              languages_url,
-              topics
-            }, idx) => (
+            (
+              {
+                id,
+                clone_url: _,
+                homepage,
+                name,
+                private_repo,
+                description,
+                created_at,
+                languages_url,
+                topics
+              },
+              idx
+            ) => (
               <Card key={id} className="case-studies-card">
                 <div className="card-img-container">
                   <img
