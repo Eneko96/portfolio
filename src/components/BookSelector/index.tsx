@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import './styles.css'
 
 interface IBookCard {
   onClick: ({ id, day }: { id: number; day: string }) => any
@@ -21,10 +22,10 @@ const dateBookings = (): any => {
   else return dateBookings()
 }
 
-const Card = ({children, classNamme, onClick}: {children: any, onClick: any, classNamme: string}) => (
-    <div>
-        {children}
-        </div>
+const Card = ({ children, className, onClick }: { children: any, onClick: any, className: string }) => (
+  <div className={className} onClick={onClick}>
+    {children}
+  </div>
 )
 
 const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {

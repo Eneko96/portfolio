@@ -29,36 +29,36 @@ export const Input: React.FC<
   validation,
   ...rest
 }) => {
-  const [error, setError] = useState(false);
-  if (!name) console.error(Error('Input must have a name'))
-  
-  const onChangeValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    const [error, setError] = useState(false);
+    if (!name) console.error(Error('Input must have a name'))
+
+    const onChangeValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
       const isValid = validation(evt.target.value)
       if (!isValid) setError(true)
       else {
-          if (!error) setError(false)
-          onChange?.(evt)
+        if (!error) setError(false)
+        onChange?.(evt)
       }
+    }
+    return (
+      <div className="input-wrapper" style={{ width: '100%' }}>
+        {label && (
+          <label className="caption">
+            {label}
+            {required && <small>*</small>}
+          </label>
+        )}
+        <input
+          name={name}
+          placeholder={placeholder}
+          type={type || 'text'}
+          onChange={onChangeValue}
+          {...rest}
+        />
+        {error && <p className="input-helper-text input-error-text">{error}</p>}
+      </div>
+    )
   }
-  return (
-    <div className="input-wrapper" style={{ width: '100%' }}>
-      {label && (
-        <label className="caption">
-          {label}
-          {required && <small>*</small>}
-        </label>
-      )}
-      <input
-        name={name}
-        placeholder={placeholder}
-        type={type || 'text'}
-        onChange={onChangeValue}
-        {...rest}
-      />
-      {error && <p className="input-helper-text input-error-text">{error}</p>}
-    </div>
-  )
-}
 
 export const Radio: React.FC<
   TCommonInputProps<React.InputHTMLAttributes<HTMLInputElement>>
@@ -67,7 +67,7 @@ export const Radio: React.FC<
   return (
     <div className="tag-ds radio-container">
       <input id={id} type="radio" name={name} {...rest} />
-      <label htmlFor="radio">{label}</label>
+      <label htmlFor={id}>{label}</label>
     </div>
   )
 }
