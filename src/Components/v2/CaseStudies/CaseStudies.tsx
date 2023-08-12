@@ -1,5 +1,5 @@
 import Loader from '@TagDs/components/loader/loader'
-import { useEffect, useMemo, useState } from 'react'
+import { memo, useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Card } from '../Card/Card'
 import { SeeMore } from '../SeeMore/SeeMore'
@@ -41,18 +41,13 @@ export const CaseStudies = () => {
     const getRepos = async () => {
       const repos = await fetch(import.meta.env.VITE_GITHUB_URI, { signal })
       const res = await repos.json()
-      const omitRes = res.filter(
-        (elem: IRepos) => !OMIT_NAMES.includes(elem.name)
-      )
-      tmpSort(omitRes)
-      setRepos(omitRes)
+      return res
     }
     const getCats = async () => {
       const cats = await fetch(
         `https://api.thecatapi.com/v1/images/search?limit=28&api_key=live_UU7j7mB39u7n3ZYZRkMWdi5dFHIAHCCkdkqPj4oWRzCspI3d7My1bKMNrVi7g87O`
       )
-      const res = await cats.json()
-      setCats(res)
+      return await cats.json()
     }
 
     Promise.all([getRepos(), getCats()]).then((res: any) => {
@@ -65,7 +60,9 @@ export const CaseStudies = () => {
     })
     getRepos()
     getCats()
-    return () => controller.abort()
+    return () => {
+      controller.abort()
+    }
   }, [])
 
   const memoRepos = useMemo(
