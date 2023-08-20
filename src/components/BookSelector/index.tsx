@@ -1,32 +1,40 @@
-import { useMemo, useState } from 'react'
-import './styles.css'
+import { useMemo, useRef, useState } from 'react';
+import './styles.css';
 
 interface IBookCard {
-  onClick: ({ id, day }: { id: number; day: string }) => any
-  id: number
-  active: boolean
-  day: string
+  onClick: ({ id, day }: { id: number; day: string }) => any;
+  id: number;
+  active: boolean;
+  day: string;
 }
 
 const dateBookings = (): any => {
-  const today = new Date()
-  const weekDay = today.getDay()
-  const randomDay = Math.floor(Math.random() * 7)
-  const tempDay = today.setDate(today.getDate() + randomDay)
+  const today = new Date();
+  const weekDay = today.getDay();
+  const randomDay = Math.floor(Math.random() * 7);
+  const tempDay = today.setDate(today.getDate() + randomDay);
   if (new Date(tempDay).getDay() <= 5)
     return new Date(tempDay).toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric',
-    })
-  else return dateBookings()
-}
+    });
+  else return dateBookings();
+};
 
-const Card = ({ children, className, onClick }: { children: any, onClick: any, className: string }) => (
+const Card = ({
+  children,
+  className,
+  onClick,
+}: {
+  children: any;
+  onClick: any;
+  className: string;
+}) => (
   <div className={className} onClick={onClick}>
     {children}
   </div>
-)
+);
 
 const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {
   return (
@@ -44,7 +52,7 @@ const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {
           border: 'none',
           position: 'absolute',
           top: 0,
-          left: 0
+          left: 0,
         }}
         value={day}
         name="calendar"
@@ -54,7 +62,7 @@ const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {
           padding: '8px',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '8px',
         }}
       >
         <span className={`material-icons${!active ? '-outlined' : ''}`}>
@@ -67,7 +75,7 @@ const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {
           padding: '8px',
           display: 'flex',
           alignItems: 'center',
-          gap: '8px'
+          gap: '8px',
         }}
       >
         <span className={`material-icons${!active ? '-outlined' : ''}`}>
@@ -76,22 +84,23 @@ const BookCard: React.FC<IBookCard> = ({ onClick, id, active, day }) => {
         <span className="small">17:30 PM</span>
       </div>
     </Card>
-  )
-}
+  );
+};
 
 export const BookSelector: React.FC<any> = () => {
-  const [selected, setSelected] = useState<number | null>(null)
+  const [selected, setSelected] = useState<number | null>(null);
   const days: string[] = useMemo(
     () =>
       Array(5)
         .fill(0)
         .map(() => dateBookings()),
-    []
-  )
+    [],
+  );
 
   const changeHandler = ({ id, day }: { id: number; day: string }) => {
-    setSelected(id)
-  }
+    setSelected(id);
+    window.calendar = { id, day };
+  };
 
   return (
     <div>
@@ -118,5 +127,5 @@ export const BookSelector: React.FC<any> = () => {
           ))}
       </div>
     </div>
-  )
-}
+  );
+};

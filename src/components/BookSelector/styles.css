@@ -31,6 +31,8 @@
   padding: 24px;
   outline: none;
   position: relative;
+  box-shadow: 6px 4px 24px #1c304b14;
+  border-radius: 8px;
 }
 
 .book-card > input {
@@ -39,7 +41,7 @@
 
 .book-card:active {
   transform: scale(0.98);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .book-card.active {
@@ -71,6 +73,3 @@
     width: 100%;
   }
 }
-
-
-
