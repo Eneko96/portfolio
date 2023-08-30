@@ -1,22 +1,24 @@
 import Sidebar, { SidebarButton } from '../../../tag/sidebar';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { sElements } from './constants';
 import './styles.css';
 const TRANSITION_CONSTRUCTOR = 'top 0.3s ease-in-out';
 
-const TITLE_OFFSET = 100;
-
-const handleScroll = (id: string) => {
-  const element = document.getElementById(id);
-  if (element) window.scrollTo(0, element.offsetTop - TITLE_OFFSET);
-};
-
 export default function SB({ url }: { url: string }) {
-  const [selected, setSelected] = useState<typeof sElements[number]>(
-    sElements.find((e) => e.href === url) || sElements[0]
+  const firstRender = useRef(false);
+  const [selected, setSelected] = useState<(typeof sElements)[number]>(
+    sElements.find((e) => e.href === url) || sElements[0],
   );
 
   useEffect(() => {
+    const urlHash = window.location.hash;
+    if (urlHash.length > 1)
+      // eslint-disable-next-line $rulename
+      setSelected(sElements.find((e) => e.href === urlHash));
+  }, []);
+
+  useEffect(() => {
+    if (!firstRender.current) firstRender.current = true;
     const focuser = document.getElementsByClassName('focuser');
     let focus: any;
     if (focuser.length > 0) {
@@ -38,7 +40,19 @@ export default function SB({ url }: { url: string }) {
       focus.style.transition = TRANSITION_CONSTRUCTOR;
       focus.style.top = `${document.getElementById(selected.id)!.offsetTop}px`;
     }
+
+    const urlHash = window.location.hash;
+    if (firstRender.current && urlHash.length > 1) {
+      document.getElementById(urlHash.slice(0));
+    }
   }, [url, selected]);
+
+  const replaceHash = (href: string) => {
+    if (href.includes('#')) {
+      return `/${href}`;
+    }
+    return '/';
+  };
 
   return (
     <Sidebar collapsed className="sidebar-custom">
@@ -55,20 +69,13 @@ export default function SB({ url }: { url: string }) {
               }
             />
           }
-          onClick={
-            (element.onClick &&
-              url === '/' &&
-              element.onClick(() => {
-                handleScroll(element.label.toLowerCase().replace(' ', ''));
-                setSelected(element as typeof sElements[number]);
-              }) as any)  ||
-            undefined
-          }
+          onClick={(evt) => {
+            console.log(evt);
+            setSelected(element as (typeof sElements)[number]);
+          }}
           id={element.id}
           label={element.label}
-          href={
-            !element.onClick ? element.href : (url !== '/' && '/') || '#'
-          }
+          href={url.length > 1 ? replaceHash(element.href) : element.href}
         />
       ))}
     </Sidebar>
