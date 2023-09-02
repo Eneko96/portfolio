@@ -1,6 +1,5 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { marked } from 'marked';
 import Breadcrumb from '../../components/Breadcrumb/index.astro';
 import BreadcrumbItem from '../../components/Breadcrumb/Item.astro';
 import HeadLine from '../../components/HeadLine.astro';
@@ -10,80 +9,23 @@ import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
 
 export async function getStaticPaths() {
-  // get readme from github
-  const repos: any[] = await fetch(
-    'https://api.github.com/users/eneko96/repos'
-  ).then((res) => res.json());
+    const readmes = await Astro.glob('./*.md');
 
-  const getReadme = async (repo: any) => {
-      try {
-          const readme = await fetch(
-                  `https://raw.githubusercontent.com/Eneko96/${repo.name}/main/README.md`
-                  );
-          if (!readme.ok) {
-              throw new Error(`Could not fetch README for this one ${repo.name}`)
-          }
-          const readmeText = await readme.text();
-          return readmeText;
-      } catch (err) {
-          console.error(`Failed to fetch or parse README for ${repo.name}`);
-          return ''
-      }
+    return readmes.map(readme => ({
+        params: {
+          slug: readme.frontmatter.slug
+          },
+          props: {
+              readme
+            }
+      }))
   };
-
-  const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
-
-  return repos.map((repo, idx) => {
-    return {
-      params: {
-        slug: repo.name,
-      },
-      props: {
-        id: repo.name,
-        title: repo.name,
-        name: repo.name,
-        description: repo.description,
-        url: repo.html_url,
-        created_at: repo.created_at,
-        topics: repo.topics,
-        languages: [
-          {
-            name: 'JavaScript',
-            color: '#f1e05a',
-          },
-          {
-            name: 'TypeScript',
-            color: '#2b7489',
-          },
-          {
-            name: 'CSS',
-            color: '#563d7c',
-          },
-          {
-            name: 'HTML',
-            color: '#e34c26',
-          },
-        ],
-        content: marked.parse(readmes[idx], {
-          breaks: true,
-          gfm: true,
-          headerIds: true,
-        }),
-      },
-    };
-  });
-}
-const {
-  id,
-  name,
-  description,
-  url,
-  content,
-  languages,
-  title,
-  topics,
-  created_at,
-} = Astro.props;
+  const { Content } = Astro.props.readme;
+  const name = 'Your Name Here'; // replace with actual data
+  const title = 'Your Title Here'; // replace with actual data
+  const topics = []; // replace with actual data
+  const languages = {}; // replace with actual data
+  const created_at = new Date(); // replace with actual data
 ---
 
 <script>
@@ -135,7 +77,7 @@ const {
       <div class="study-inner">
         <main class="study-inner-container-layer">
           <div class="study-inner-container-content">
-            <div set:html={content} />
+          <Content />
           </div>
         </main>
       </div>
@@ -295,6 +237,10 @@ const {
   .study-right-side-element > p {
     margin-top: 8px;
   }
+  .tag-ds p {
+      font-size: 16px !important;
+      line-height: 24px !important;
+    }
 
   @media (max-width: 768px) {
     .study-header {

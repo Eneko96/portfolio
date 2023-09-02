@@ -14,21 +14,21 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^2.2.1",
-    "@supabase/supabase-js": "^2.31.0",
-    "@types/react": "^18.2.18",
+    "@astrojs/react": "^3.0.0",
+    "@supabase/supabase-js": "^2.33.1",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "astro": "^2.10.1",
+    "astro": "^3.0.5",
     "eslint-plugin-prettier": "^5.0.0",
-    "marked": "^6.0.0",
+    "marked": "^7.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "resend": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.46.0",
+    "eslint": "^8.48.0",
     "eslint-config-prettier": "^9.0.0",
-    "prettier": "^3.0.1"
+    "prettier": "^3.0.3"
   },
   "eslintConfig": {
     "rules": {

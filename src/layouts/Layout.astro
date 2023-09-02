@@ -1,10 +1,11 @@
 ---
-import '../../tag/index.css';
 import { PreFooter } from '../components/PreFooter/PreFooter';
 import SB from '../components/Sidebar/Sidebar';
+import { ViewTransitions } from 'astro:transitions';
 export interface Props {
   title: string;
 }
+import '../../tag/index.css';
 
 const { title } = Astro.props;
 const { pathname } = Astro.url;
@@ -40,6 +41,7 @@ const { pathname } = Astro.url;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions /> 
   </head>
   <body class="tag-ds">
     <SB client:load url={pathname} />
