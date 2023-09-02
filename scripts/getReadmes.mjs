@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 const GITHUB_URI = 'https://api.github.com/users/eneko96/repos';
+const projectsDir = `../src/pages/content/projects`;
 
 const getRepos = async () => {
   try {
@@ -26,6 +27,18 @@ const getReadme = async (repo) => {
   }
 };
 
+const getLanguage = async (name) => {
+  try {
+    const language = await fetch(
+      `https://api.github.com/repos/Eneko96/${name}/languages`,
+    );
+    const res = await language.json();
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 const appendMetadata = (metadata) => {
   return Object.keys(metadata)
     .map((key) => `${key}: ${metadata[key]}`)
@@ -35,6 +48,7 @@ const appendMetadata = (metadata) => {
 const downloadReadmes = async () => {
   const repos = await getRepos();
   const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
+  const languages = await Promise.all(repos.map((repo) => getLanguage(repo)));
 
   Promise.all(
     repos.map(({ name, description, html_url, created_at, topics }, idx) => {
@@ -44,11 +58,12 @@ const downloadReadmes = async () => {
         html_url,
         created_at,
         topics,
+        languages: languages[idx],
       });
       const completeContent = `---\n${metadata}\n---\n${readmes[idx]}`;
 
       return fs
-        .writeFile(`../src/pages/projects/${name}.md`, completeContent)
+        .writeFile(`${projectsDir}/${name}.md`, completeContent)
         .then(() => {
           console.log('written successfully');
         })

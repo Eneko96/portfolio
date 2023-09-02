@@ -1,5 +1,4 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import Breadcrumb from '../../components/Breadcrumb/index.astro';
 import BreadcrumbItem from '../../components/Breadcrumb/Item.astro';
 import HeadLine from '../../components/HeadLine.astro';
@@ -7,25 +6,31 @@ import { CustomChip } from '../../components/Work/Work';
 import { serializeClient } from '../../utils/client';
 import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
+import Layout from '../../layouts/Layout.astro';
+// remember, customComponents in md are only available in mdx
 
 export async function getStaticPaths() {
-    const readmes = await Astro.glob('./*.md');
+    const readmes = await Astro.glob('../../content/projects/*.md');
 
-    return readmes.map(readme => ({
+    return readmes.map(readme => {
+    return {
         params: {
-          slug: readme.frontmatter.slug
+          slug: readme.frontmatter.name
           },
           props: {
-              readme
+              readme,
+              name: readme.frontmatter.name,
+              description: readme.frontmatter.description,
+              created_at: readme.frontmatter.created_at,
+              title: readme.frontmatter.name,
+              topics: [],
+              languages: {}
             }
-      }))
-  };
+      }
+    })
+};
   const { Content } = Astro.props.readme;
-  const name = 'Your Name Here'; // replace with actual data
-  const title = 'Your Title Here'; // replace with actual data
-  const topics = []; // replace with actual data
-  const languages = {}; // replace with actual data
-  const created_at = new Date(); // replace with actual data
+  const { name, created_at, topics, languages, title } = Astro.props;
 ---
 
 <script>
@@ -136,7 +141,6 @@ export async function getStaticPaths() {
       </div>
     </div>
   </div>
-  <!-- {astro.html} -->
 </Layout>
 
 <style>
@@ -282,4 +286,18 @@ export async function getStaticPaths() {
       padding-top: 32px;
     }
   }
+</style>
+<style is:global>
+    .study-inner-container-content p {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    .study-inner-container-content li {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    .study-inner-container-content li {
+        font-size: 16px;
+        line-height: 24px;
+      }
 </style>
