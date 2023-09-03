@@ -4,4 +4,5 @@ description: just a little relational database in order to try how to use heroku
 html_url: https://github.com/Eneko96/postgre-sequelize-project-tasks
 created_at: 2022-04-22T16:37:17Z
 topics: 
+languages: JavaScript
 ---

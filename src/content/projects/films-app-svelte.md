@@ -4,6 +4,7 @@ description: Web App for searching within films, pending of rethink and recreati
 html_url: https://github.com/Eneko96/films-app-svelte
 created_at: 2022-05-18T22:22:46Z
 topics: 
+languages: Svelte,CSS,HTML,JavaScript
 ---
 # Svelte + Vite
 

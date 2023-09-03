@@ -30,7 +30,11 @@ export interface IRepos {
 
 const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app'];
 
-const repos = await fetch(import.meta.env.GITHUB_URI);
+// you could remove this as well and use the metadata from your readmes
+const repos = await fetch(import.meta.env.GITHUB_URI,{
+  headers: { 
+    Authorization: `Bearer ${import.meta.env.GITHUB_KEY}`
+  }});
 const res: IRepos[] = await repos.json();
 ---
 
@@ -76,6 +80,7 @@ const res: IRepos[] = await repos.json();
               </div>
               <button class="button card-button-details">
                 <a
+                  class="card-anchor"
                   style="color:inherit"
                   href={`/projects/${name}`}
                 >
@@ -169,7 +174,14 @@ const res: IRepos[] = await repos.json();
   .card-button-details {
     margin-top: auto;
     margin-left: auto;
+    position: relative;
   }
+
+  .card-anchor {
+      position: absolute;
+      padding-block: 10px;
+      padding-inline:35px;
+    }
 
   @media (max-width: 768px) {
     .case-studies {
@@ -198,20 +210,25 @@ const res: IRepos[] = await repos.json();
   }
 </style>
 <script>
-  const caseStudies = document.querySelector('.case-studies');
-  let isLoadMore = false;
+  document.addEventListener('DOMContentLoaded', () => {
+    const caseStudies = document.querySelector('.case-studies');
+    let isLoadMore = false;
 
-  const lmButton = document.querySelector('#loadMoreButton');
+    const lmButton = document.querySelector('#loadMoreButton');
 
-  lmButton?.addEventListener('click', () => {
-    isLoadMore = !isLoadMore;
-    lmButton.textContent = isLoadMore
-      ? 'See less related works'
-      : 'See more related works';
-    if (isLoadMore) {
-      caseStudies?.classList.add('is-open');
-    } else {
-      caseStudies?.classList.remove('is-open');
+    const loadMore = () => {
+      console.log(isLoadMore)
+      isLoadMore = !isLoadMore;
+      lmButton.textContent = isLoadMore
+        ? 'See less related works'
+        : 'See more related works';
+      if (isLoadMore) {
+        caseStudies?.classList.add('is-open');
+      } else {
+        caseStudies?.classList.remove('is-open');
+      }
     }
-  });
+
+    lmButton?.addEventListener('click', loadMore);
+  })
 </script>

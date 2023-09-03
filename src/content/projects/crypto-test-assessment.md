@@ -4,6 +4,7 @@ description: Test from a company I did some time ago, where they asked me to cre
 html_url: https://github.com/Eneko96/crypto-test-assessment
 created_at: 2023-07-12T23:28:28Z
 topics: 
+languages: TypeScript,CSS,Shell,JavaScript,Dockerfile,HTML
 ---
 # Redacre
 

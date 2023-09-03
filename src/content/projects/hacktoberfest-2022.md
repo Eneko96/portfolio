@@ -4,6 +4,7 @@ description: Solving a frontend challenge for Hacktoberfest 2022
 html_url: https://github.com/Eneko96/hacktoberfest-2022
 created_at: 2022-10-01T23:36:57Z
 topics: 
+languages: JavaScript,Astro,TypeScript,CSS,Svelte,Vue,Shell
 ---
 <a href="https://hacktoberfest-2022.vercel.app/">
 <img src="public/banner_gh.jpg">

@@ -6,7 +6,7 @@ const projectsDir = `./src/content/projects`;
 const GITHUB_KEY = process.env.GITHUB_KEY;
 
 const options = {
-  Authorization: `Bearer: ${GITHUB_KEY}`,
+  Authorization: `Bearer ${GITHUB_KEY}`,
   Accept: 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
 };
@@ -30,7 +30,7 @@ const getReadme = async (repo) => {
         headers: {
           ...options,
         },
-      },
+      }
     );
     if (!readme.ok) {
       throw new Error(`Could not fetch README for this one ${repo.name}`);
@@ -52,7 +52,7 @@ const getLanguage = async (name) => {
         headers: {
           ...options,
         },
-      },
+      }
     );
     const res = await language.json(); // gives the languages and the amount of lines used
     console.log('languages', res);
@@ -72,7 +72,7 @@ const downloadReadmes = async () => {
   const repos = await getRepos();
   const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
   const languages = await Promise.all(
-    repos.map((repo) => getLanguage(repo.name)),
+    repos.map((repo) => getLanguage(repo.name))
   );
 
   Promise.all(
@@ -95,7 +95,7 @@ const downloadReadmes = async () => {
         .catch((err) => {
           console.log('an error', err);
         });
-    }),
+    })
   )
     .then(() => {
       console.log('All READMEs saved.');

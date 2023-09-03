@@ -4,6 +4,7 @@ description: Web app for coding small snippets for testing things on the web bro
 html_url: https://github.com/Eneko96/Codeneko
 created_at: 2022-03-15T19:02:35Z
 topics: 
+languages: TypeScript,CSS,HTML,JavaScript
 ---
 # Codeneko
 

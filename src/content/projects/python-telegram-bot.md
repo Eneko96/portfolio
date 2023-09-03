@@ -4,6 +4,33 @@ description: null
 html_url: https://github.com/Eneko96/python-telegram-bot
 created_at: 2022-08-18T18:33:21Z
 topics: 
-languages: [object Object]
+languages: Python,Procfile
 ---
-{"name":"README.md","path":"README.md","sha":"ea45f849dd9c9441ff2ef4d4d331554da1df874a","size":938,"url":"https://api.github.com/repos/Eneko96/python-telegram-bot/contents/README.md?ref=main","html_url":"https://github.com/Eneko96/python-telegram-bot/blob/main/README.md","git_url":"https://api.github.com/repos/Eneko96/python-telegram-bot/git/blobs/ea45f849dd9c9441ff2ef4d4d331554da1df874a","download_url":"https://raw.githubusercontent.com/Eneko96/python-telegram-bot/main/README.md","type":"file","content":"LS0tCnRpdGxlOiBQeXRob24gVGVsZWdyYW0gQm90CmRlc2NyaXB0aW9uOiBB\nIFRlbGVncmFtIEJvdCBXcml0dGVuIGluIFB5dGhvbgp0YWdzOgogIC0gcHl0\naG9uCiAgLSBweXRob24tZGlzY29yZC1ib3QKICAtIHRlbGVncmFtCi0tLQoK\nIyBQeXRob24tVGVsZWdyYW0tQm90CgpUaGlzIGV4YW1wbGUgc3RhcnRzIGEg\nVGVsZWdyYW0gYm90IHVzaW5nIFtweXRob24tdGVsZWdyYW0tYm90XShodHRw\nczovL3d3dy5weXRob24tdGVsZWdyYW0tYm90Lm9yZy8pIGxpYnJhcnkuCgpb\nIVtEZXBsb3kgb24gUmFpbHdheV0oaHR0cHM6Ly9yYWlsd2F5LmFwcC9idXR0\nb24uc3ZnKV0oaHR0cHM6Ly9yYWlsd2F5LmFwcC9uZXcvdGVtcGxhdGU/dGVt\ncGxhdGU9aHR0cHMlM0ElMkYlMkZnaXRodWIuY29tJTJGcmFpbHdheWFwcCUy\nRmV4YW1wbGVzJTJGdHJlZSUyRm1hc3RlciUyRmV4YW1wbGVzJTJGcHl0aG9u\nLXRlbGVncmFtLWJvdCZlbnZzPVRPS0VOJlRPS0VORGVzYz1UaGUrVGVsZWdy\nYW0rQm90JTI3cytUb2tlbislMjhHZW5lcmF0ZSthK3Rva2VuK2Zyb20rJTQw\nQm90RmF0aGVyK2lmK3lvdStkb24lMjd0K2hhdmUrb25lJTIxJTI5KQoKIyMg\n4pyoIEZlYXR1cmVzCgotIFB5dGhvbgotIFB5dGhvbiBUZWxlZ3JhbSBCb3QK\nCiMjIPCfkoHigI3imYDvuI8gSG93IHRvIHVzZQoKLSBJbnN0YWxsIHBhY2th\nZ2VzIHVzaW5nIGBwaXAgaW5zdGFsbCAtciByZXF1aXJlbWVudHMudHh0YAot\nIFN0YXJ0IHRoZSBib3QgdXNpbmcgYHB5dGhvbiBib3QucHlgCgojIyDwn5Od\nIE5vdGVzCgpUaGlzIGlzIGEgYmFzaWMgYm90IHdpdGggdGhlIGNvbW1hbmQg\nYC9zdGFydGAsIG1vcmUgaW5mb3JtYXRpb24gY2FuIGJlIGZvdW5kZWQgYXQg\ndGhlIFtvZmZpY2FsIGRvY3VtZW50YXRpb25dKGh0dHBzOi8vcHl0aG9uLXRl\nbGVncmFtLWJvdC5yZWFkdGhlZG9jcy5pby9lbi9zdGFibGUvKS4=\n","encoding":"base64","_links":{"self":"https://api.github.com/repos/Eneko96/python-telegram-bot/contents/README.md?ref=main","git":"https://api.github.com/repos/Eneko96/python-telegram-bot/git/blobs/ea45f849dd9c9441ff2ef4d4d331554da1df874a","html":"https://github.com/Eneko96/python-telegram-bot/blob/main/README.md"}}
+---
+title: Python Telegram Bot
+description: A Telegram Bot Written in Python
+tags:
+  - python
+  - python-discord-bot
+  - telegram
+---
+
+# Python-Telegram-Bot
+
+This example starts a Telegram bot using [python-telegram-bot](https://www.python-telegram-bot.org/) library.
+
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Frailwayapp%2Fexamples%2Ftree%2Fmaster%2Fexamples%2Fpython-telegram-bot&envs=TOKEN&TOKENDesc=The+Telegram+Bot%27s+Token+%28Generate+a+token+from+%40BotFather+if+you+don%27t+have+one%21%29)
+
+## ✨ Features
+
+- Python
+- Python Telegram Bot
+
+## 💁‍♀️ How to use
+
+- Install packages using `pip install -r requirements.txt`
+- Start the bot using `python bot.py`
+
+## 📝 Notes
+
+This is a basic bot with the command `/start`, more information can be founded at the [offical documentation](https://python-telegram-bot.readthedocs.io/en/stable/).

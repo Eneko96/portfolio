@@ -13,6 +13,7 @@ export async function getStaticPaths() {
     const readmes = await Astro.glob('../../content/projects/*.md');
 
     return readmes.map(readme => {
+      console.log(readme.frontmatter.languages?.split(','))
     return {
         params: {
           slug: readme.frontmatter.name
@@ -24,7 +25,7 @@ export async function getStaticPaths() {
               created_at: readme.frontmatter.created_at,
               title: readme.frontmatter.name,
               topics: [],
-              languages: {}
+              languages: readme.frontmatter.languages?.split(',') ?? []
             }
       }
     })
@@ -117,9 +118,9 @@ export async function getStaticPaths() {
           <div class="study-right-side-element">
             <small>Tech Stack</small>
             {
-              languages ? (
+              languages.length ? (
                 <div class="study-tech-stack">
-                  {Object.keys(languages).map((lang, idx) => (
+                  {languages.map((lang: string, idx: number) => (
                     <CustomChip client:visible key={idx + lang}>
                       {lang}{' '}
                     </CustomChip>
