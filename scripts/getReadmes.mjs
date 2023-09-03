@@ -1,11 +1,22 @@
 import { promises as fs } from 'fs';
+import dotenv from 'dotenv';
+dotenv.config();
 const GITHUB_URI = 'https://api.github.com/users/eneko96/repos';
-const projectsDir = `../src/pages/content/projects`;
+const projectsDir = `./src/content/projects`;
+const GITHUB_KEY = process.env.GITHUB_KEY;
+
+const options = {
+  Authorization: `Bearer: ${GITHUB_KEY}`,
+  Accept: 'application/vnd.github+json',
+  'X-GitHub-Api-Version': '2022-11-28',
+};
 
 const getRepos = async () => {
   try {
-    const repos = await fetch(GITHUB_URI);
-    return repos.json();
+    const repos = await fetch(GITHUB_URI, { headers: { ...options } });
+    const res = await repos.json();
+    console.log('repos', res);
+    return res;
   } catch (err) {
     console.log('Failed to fetch the repos');
   }
@@ -15,11 +26,17 @@ const getReadme = async (repo) => {
   try {
     const readme = await fetch(
       `https://raw.githubusercontent.com/Eneko96/${repo.name}/main/README.md`,
+      {
+        headers: {
+          ...options,
+        },
+      },
     );
     if (!readme.ok) {
       throw new Error(`Could not fetch README for this one ${repo.name}`);
     }
     const readmeText = await readme.text();
+    console.log('readme', readmeText);
     return readmeText;
   } catch (err) {
     console.error(`Failed to fetch or parse README for ${repo.name}`);
@@ -31,9 +48,15 @@ const getLanguage = async (name) => {
   try {
     const language = await fetch(
       `https://api.github.com/repos/Eneko96/${name}/languages`,
+      {
+        headers: {
+          ...options,
+        },
+      },
     );
-    const res = await language.json();
-    return res;
+    const res = await language.json(); // gives the languages and the amount of lines used
+    console.log('languages', res);
+    return Object.keys(res);
   } catch (err) {
     console.log(err);
   }
@@ -48,7 +71,9 @@ const appendMetadata = (metadata) => {
 const downloadReadmes = async () => {
   const repos = await getRepos();
   const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
-  const languages = await Promise.all(repos.map((repo) => getLanguage(repo)));
+  const languages = await Promise.all(
+    repos.map((repo) => getLanguage(repo.name)),
+  );
 
   Promise.all(
     repos.map(({ name, description, html_url, created_at, topics }, idx) => {
