@@ -19,6 +19,7 @@
 
 .book-recopilation-message {
   margin-bottom: 101px;
+  max-width: 75ch;
 }
 
 .book-title {
@@ -69,6 +70,9 @@
     margin: 0 !important;
   }
 
+  .book-card {
+    width: 100%;
+  }
   .bookcard-list > .card-v2 {
     width: 100%;
   }

@@ -7,7 +7,7 @@ export const PreFooter = () => {
     <div className="prefooter-container">
       <div className="prefooter">
         <h2>{"Let's Book a Call"}</h2>
-        <p className="base">
+        <p>
           Would you like to chat and get to know me a bit better? Don&apos;t
           hesitate. Come in and book a call with me!
         </p>
@@ -18,7 +18,14 @@ export const PreFooter = () => {
             ref.current?.click();
           }}
         >
-          <a hidden href="/Book" ref={ref} style={{ textDecoration: 'none', color: 'white' }}>Book</a>
+          <a
+            hidden
+            href="/Book"
+            ref={ref}
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            Book
+          </a>
           <span className="material-icons">trending_flat </span>
         </button>
       </div>

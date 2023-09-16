@@ -92,7 +92,7 @@ const validations = {
 
       <BookSelector client:load />
 
-      <button type="submit" class="button large" id="send-email" style={{ width: 'fit-content' }}>
+      <button disabled type="submit" class="button large" id="send-email" style={{ width: 'fit-content' }}>
         Book
       </button>
       <!-- <ReCaptcha sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY} /> -->
@@ -102,7 +102,7 @@ const validations = {
         booking a call 😉 
       </p>
     </form>
-    <Notification client:only success renderAsPortal show>
+    <Notification client:only success renderAsPortal show={true}>
       The reservation has been successfully requested! Soon will you will
       recieve a google meet invitation! I am looking forward to talk with you!
     </Notification>
@@ -170,13 +170,47 @@ const validations = {
       right: calc(2 * 8px);
       top: 50%;
     }
+  @media (max-width: 845px) {
+    .book-form {
+      display: grid;
+      gap: 32px;
+      margin-top: 20px;
+      margin-left: 0px;
+    }
+  }
+  .notification_success.show {
+      display: flex;
+    }
+  .notification_success {
+      display: none !important;
+    }
+
 </style>
-<script src="https://unpkg.com/resend" type="module" is:inline></script>
 <script>
+  const notification = document.querySelector('.notification_success')
   const sendButton = document.querySelector('#send-email');
+  const form = document.querySelector('.book-form');
+
+  const dataOptions = {
+      name: '',
+      surname: '',
+      company_name: '',
+      email: '',
+      position: 'Front End Developer',
+      aditional_information: 'None',
+      calendar: '',
+      anual_revenue: ''
+    }
+
+  form.addEventListener('input', (evt) => { 
+    dataOptions[evt.target.name] = evt.target.value;
+    if (Object.values(dataOptions).every(val => Boolean(val))) sendButton.disabled = false;
+  })
+
 
   sendButton?.addEventListener('click', async (event) => {
     event.preventDefault();
+    notification.classList.add('show')
     const form = event.target.form;
     const formValues = {
         name: form.elements['name']?.value, 
@@ -197,5 +231,6 @@ const validations = {
         mode: 'no-cors',
         body: JSON.stringify({...formValues})
       });
+    notification.classList.remove('show')
   })
 </script>
