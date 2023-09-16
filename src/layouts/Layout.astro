@@ -45,7 +45,7 @@ const { pathname } = Astro.url;
   </head>
   <body class="tag-ds">
     <SB client:load url={pathname} />
-    <div style="margin-left:80px">
+    <div class="tag-content">
       <slot />
     </div>
     {
@@ -55,6 +55,54 @@ const { pathname } = Astro.url;
     }
   </body>
 </html>
+
+<style is:global>
+.tag-content {
+  margin-left: 80px;
+  }
+
+@media screen and (max-width:  845px) {
+    .tag-content {
+        margin-left: 0px;
+        padding-inline: 20px;
+      }
+    .focuser {
+        display: none;
+      }
+    .sidebar-custom {
+        position: static !important;
+        height: 65px !important;
+        width: 100% !important;
+        max-width: none !important;
+        padding: 0 8px !important;
+        align-items: center;
+        display: flex !important;
+        flex-direction: row;
+        background-color: var(--neutral0) !important;
+        justify-content: space-between ;
+        border-bottom: var(--neutral200) solid 1px;
+      }
+    .sidebar-custom::before {
+        content: '';
+        display: inline-block;
+        width: 34px;
+        height: 34px;
+        background-image: url('../../public/Logo.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    .sidebar_divider {
+        display: none;
+      }
+    .sidebar-button {
+        -webkit-tap-highlight-color: transparent;
+        display: none !important;
+    }
+    .sidebar-collapsed-button {
+        display: none !important;
+      }
+  }
+</style>
 
 <style is:global>
   html {
