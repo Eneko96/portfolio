@@ -218,13 +218,15 @@ const res: IRepos[] = await repos.json();
 
     const loadMore = () => {
       lmButton.textContent = isLoadMore
-        ? 'See less related works'
-        : 'See more related works';
-      if (isLoadMore) {
+        ? 'See more related works'
+        : 'See less related works';
+      console.log(isLoadMore)
+      if (!isLoadMore) {
         caseStudies?.classList.add('is-open');
       } else {
         caseStudies?.classList.remove('is-open');
       }
+      isLoadMore = !isLoadMore;
     }
 
     lmButton?.addEventListener('click', loadMore);
