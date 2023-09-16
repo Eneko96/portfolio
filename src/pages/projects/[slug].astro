@@ -13,7 +13,6 @@ export async function getStaticPaths() {
     const readmes = await Astro.glob('../../content/projects/*.md');
 
     return readmes.map(readme => {
-      console.log(readme.frontmatter.languages?.split(','))
     return {
         params: {
           slug: readme.frontmatter.name

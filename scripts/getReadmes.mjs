@@ -15,10 +15,9 @@ const getRepos = async () => {
   try {
     const repos = await fetch(GITHUB_URI, { headers: { ...options } });
     const res = await repos.json();
-    console.log('repos', res);
     return res;
   } catch (err) {
-    console.log('Failed to fetch the repos');
+    console.error('Failed to fetch the repos');
   }
 };
 
@@ -30,13 +29,12 @@ const getReadme = async (repo) => {
         headers: {
           ...options,
         },
-      }
+      },
     );
     if (!readme.ok) {
       throw new Error(`Could not fetch README for this one ${repo.name}`);
     }
     const readmeText = await readme.text();
-    console.log('readme', readmeText);
     return readmeText;
   } catch (err) {
     console.error(`Failed to fetch or parse README for ${repo.name}`);
@@ -52,10 +50,9 @@ const getLanguage = async (name) => {
         headers: {
           ...options,
         },
-      }
+      },
     );
     const res = await language.json(); // gives the languages and the amount of lines used
-    console.log('languages', res);
     return Object.keys(res);
   } catch (err) {
     console.log(err);
@@ -72,7 +69,7 @@ const downloadReadmes = async () => {
   const repos = await getRepos();
   const readmes = await Promise.all(repos.map((repo) => getReadme(repo)));
   const languages = await Promise.all(
-    repos.map((repo) => getLanguage(repo.name))
+    repos.map((repo) => getLanguage(repo.name)),
   );
 
   Promise.all(
@@ -95,7 +92,7 @@ const downloadReadmes = async () => {
         .catch((err) => {
           console.log('an error', err);
         });
-    })
+    }),
   )
     .then(() => {
       console.log('All READMEs saved.');
