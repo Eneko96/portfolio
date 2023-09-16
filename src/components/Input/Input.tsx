@@ -114,11 +114,9 @@ export const SendButton = ({
   type: ButtonHTMLAttributes<HTMLButtonElement>['type'];
   children: React.ReactNode;
 }) => {
-  console.log('hi send button');
   const isSent = useRef(false);
 
   const onSend = () => {
-    console.log('on Send', isSent.current);
     // if (!isSent.current) {
     //   isSent.current = true;
     //   const resend = new Resend(import.meta.env.RESEND_KEY);

@@ -217,8 +217,6 @@ const res: IRepos[] = await repos.json();
     const lmButton = document.querySelector('#loadMoreButton');
 
     const loadMore = () => {
-      console.log(isLoadMore)
-      isLoadMore = !isLoadMore;
       lmButton.textContent = isLoadMore
         ? 'See less related works'
         : 'See more related works';

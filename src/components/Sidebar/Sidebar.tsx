@@ -69,8 +69,7 @@ export default function SB({ url }: { url: string }) {
               }
             />
           }
-          onClick={(evt) => {
-            console.log(evt);
+          onClick={() => {
             setSelected(element as (typeof sElements)[number]);
           }}
           id={element.id}
