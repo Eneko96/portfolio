@@ -1,6 +1,4 @@
-import { ILIcon } from './types'
-
-export default function FolderIcon({ active }: ILIcon) {
+export default function FolderIcon({ active }: { active: boolean }) {
   return (
     <svg
       width="24"
@@ -15,5 +13,5 @@ export default function FolderIcon({ active }: ILIcon) {
         fill="#1C304B"
       />
     </svg>
-  )
+  );
 }

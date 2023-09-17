@@ -1,6 +1,4 @@
-import { ILIcon } from './types'
-
-export default function WorkIcon({ active }: ILIcon) {
+export default function WorkIcon({ active }: { active: boolean }) {
   return (
     <svg
       width="24"
@@ -19,5 +17,5 @@ export default function WorkIcon({ active }: ILIcon) {
         fill="#1C304B"
       />
     </svg>
-  )
+  );
 }

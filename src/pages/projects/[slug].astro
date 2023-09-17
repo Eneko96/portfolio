@@ -7,7 +7,7 @@ import { serializeClient } from '../../utils/client';
 import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
 import Layout from '../../layouts/Layout.astro';
-const colors = ['#dcf5d6', '#96e283', '#73d85a', '#33841f']
+const colors = ['chip-success-1', 'chip-success-2', 'chip-success-3', 'chip-success-4']
 // remember, customComponents in md are only available in mdx
 
 const getColor = (percentage, arr) => {
@@ -129,7 +129,7 @@ export async function getStaticPaths() {
               languages.length ? (
                 <div class="study-tech-stack">
                   {languages.map((lang: { lang: string, perc: number}, idx: number) => (
-                    <CustomChip title={lang.perc} client:visible key={idx + lang.lang} color={getColor(lang.perc, colors)}>
+                    <CustomChip title={lang.perc} client:visible key={idx + lang.lang} className={getColor(lang.perc, colors)}>
                       {lang.lang}{' '}
                     </CustomChip>
                   ))}

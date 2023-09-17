@@ -1,6 +1,4 @@
-import { ILIcon } from './types'
-
-export default function DownloadIcon({ active }: ILIcon) {
+export default function DownloadIcon({ active }: { active: boolean }) {
   return (
     <svg
       width="24"
@@ -16,5 +14,5 @@ export default function DownloadIcon({ active }: ILIcon) {
       />
       <path d="M20 8.19997H13.8V2L20 8.19997Z" fill="#1C304B" />
     </svg>
-  )
+  );
 }

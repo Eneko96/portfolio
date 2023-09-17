@@ -9,24 +9,11 @@ interface Work_V2Props {
   tech_stack: string[];
 }
 
-export const CustomChip: React.FC<any> = ({
-  children,
-  className,
-  title,
-  color,
-}) => {
-  let text = '';
-  if (color === '#33841f') text = 'white';
-  return (
-    <small
-      title={`${title}%`}
-      className={`custom-chip ${className ?? ''}`}
-      style={{ backgroundColor: color, color: text, cursor: 'default' }}
-    >
-      {children}
-    </small>
-  );
-};
+export const CustomChip: React.FC<any> = ({ children, className, title }) => (
+  <small title={`${title}%`} className={`custom-chip ${className ?? ''}`}>
+    {children}
+  </small>
+);
 
 export const WorkV2: React.FC<Work_V2Props> = ({
   client,

@@ -1,6 +1,4 @@
-import { ILIcon } from './types'
-
-export default function ChatIcon({ active }: ILIcon) {
+export default function ChatIcon({ active }: { active: boolean }) {
   return (
     <svg
       width="24"
@@ -15,5 +13,5 @@ export default function ChatIcon({ active }: ILIcon) {
         fill="#1C304B"
       />
     </svg>
-  )
+  );
 }

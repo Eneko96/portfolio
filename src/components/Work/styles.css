@@ -1,9 +1,8 @@
 .workv2-container {
   display: flex;
   gap: 72px;
-  animation: scaleit .5s;
+  animation: scaleit 0.5s;
 }
-
 
 .section-tech_stack {
   display: flex;
@@ -27,6 +26,27 @@
 
 .section-info-title {
   margin: 16px;
+}
+
+.custom-chip.chip-success-1 {
+  background-color: var(--success100);
+  cursor: default;
+}
+
+.custom-chip.chip-success-2 {
+  background-color: var(--success200);
+  cursor: default;
+}
+
+.custom-chip.chip-success-3 {
+  background-color: var(--success400);
+  cursor: default;
+}
+
+.custom-chip.chip-success-4 {
+  background-color: var(--success600);
+  color: white;
+  cursor: default;
 }
 
 @keyframes scaleit {
@@ -55,8 +75,8 @@
   .section-tech_stack > .custom-chip {
     white-space: nowrap;
     text-align: center;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
