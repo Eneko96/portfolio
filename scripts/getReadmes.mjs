@@ -62,7 +62,7 @@ const getReadme = async (repo) => {
     return readmeText;
   } catch (err) {
     console.error(`Failed to fetch or parse README for ${repo.name}`);
-    return '';
+    return '## There is no content for this project at the moment';
   }
 };
 
