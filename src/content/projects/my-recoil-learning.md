@@ -4,7 +4,7 @@ description: null
 html_url: https://github.com/Eneko96/my-recoil-learning
 created_at: 2022-03-19T23:46:11Z
 topics: 
-languages: TypeScript,CSS,HTML
+languages: [{"lang":"TypeScript","perc":63},{"lang":"CSS","perc":27},{"lang":"HTML","perc":9}]
 ---
 # my-recoil-learning
 

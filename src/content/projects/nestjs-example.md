@@ -4,7 +4,7 @@ description: nestjs-example
 html_url: https://github.com/Eneko96/nestjs-example
 created_at: 2022-12-12T01:25:27Z
 topics: 
-languages: TypeScript,JavaScript
+languages: [{"lang":"TypeScript","perc":88},{"lang":"JavaScript","perc":11}]
 ---
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>

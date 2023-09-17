@@ -4,7 +4,7 @@ description: null
 html_url: https://github.com/Eneko96/nestjs-rabbitmq-microservices-example
 created_at: 2023-04-14T22:57:56Z
 topics: 
-languages: TypeScript,Dockerfile,JavaScript,Shell
+languages: [{"lang":"TypeScript","perc":91},{"lang":"Dockerfile","perc":4},{"lang":"JavaScript","perc":2},{"lang":"Shell","perc":1}]
 ---
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>

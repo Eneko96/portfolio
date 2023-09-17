@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs';
 import dotenv from 'dotenv';
+import path from 'path';
 dotenv.config();
 const GITHUB_URI = 'https://api.github.com/users/eneko96/repos';
 const projectsDir = `./src/content/projects`;
@@ -9,6 +10,29 @@ const options = {
   Authorization: `Bearer ${GITHUB_KEY}`,
   Accept: 'application/vnd.github+json',
   'X-GitHub-Api-Version': '2022-11-28',
+};
+
+const deleteReadmes = () => {
+  fs.readdir(projectsDir, (err, files) => {
+    if (err) {
+      console.error(`Error reading directory: ${err}`);
+      return;
+    }
+
+    files.forEach((file) => {
+      if (path.extname(file) === '.md') {
+        const filePath = path.join(projectsDir, file);
+
+        fs.unlink(filePath, (err) => {
+          if (err) {
+            console.error(`Error deleting file ${file}: ${err}`);
+            return;
+          }
+          console.log(`Deleted: ${file}`);
+        });
+      }
+    });
+  });
 };
 
 const getRepos = async () => {
@@ -42,6 +66,8 @@ const getReadme = async (repo) => {
   }
 };
 
+const getPercentage = (num, total) => Math.floor((num * 100) / total);
+
 const getLanguage = async (name) => {
   try {
     const language = await fetch(
@@ -53,7 +79,16 @@ const getLanguage = async (name) => {
       },
     );
     const res = await language.json(); // gives the languages and the amount of lines used
-    return Object.keys(res);
+    const total = Object.values(res).reduce((acc, curr) => acc + curr, 0);
+    return JSON.stringify(
+      Object.keys(res).map((el) => {
+        console.log(el, res[el]);
+        return {
+          lang: el,
+          perc: getPercentage(res[el], total),
+        };
+      }),
+    );
   } catch (err) {
     console.log(err);
   }
@@ -102,4 +137,5 @@ const downloadReadmes = async () => {
     });
 };
 
+deleteReadmes();
 downloadReadmes();

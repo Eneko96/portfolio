@@ -4,7 +4,7 @@ description: null
 html_url: https://github.com/Eneko96/laperdizcritica
 created_at: 2023-07-15T12:35:51Z
 topics: 
-languages: TypeScript,CSS,JavaScript
+languages: [{"lang":"TypeScript","perc":88},{"lang":"CSS","perc":6},{"lang":"JavaScript","perc":4}]
 ---
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

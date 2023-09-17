@@ -4,7 +4,7 @@ description: Sample code of my blog tutorials
 html_url: https://github.com/Eneko96/blog-tutorials
 created_at: 2022-12-13T23:20:32Z
 topics: 
-languages: TypeScript,Java,JavaScript,HTML,CSS,Handlebars,Shell,Dockerfile,TeX
+languages: [{"lang":"TypeScript","perc":34},{"lang":"Java","perc":27},{"lang":"JavaScript","perc":25},{"lang":"HTML","perc":5},{"lang":"CSS","perc":3},{"lang":"Handlebars","perc":2},{"lang":"Shell","perc":0},{"lang":"Dockerfile","perc":0},{"lang":"TeX","perc":0}]
 ---
 # blog-tutorials
 

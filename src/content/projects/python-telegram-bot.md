@@ -4,7 +4,7 @@ description: null
 html_url: https://github.com/Eneko96/python-telegram-bot
 created_at: 2022-08-18T18:33:21Z
 topics: 
-languages: Python,Procfile
+languages: [{"lang":"Python","perc":96},{"lang":"Procfile","perc":3}]
 ---
 ---
 title: Python Telegram Bot

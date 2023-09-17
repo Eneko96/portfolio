@@ -4,7 +4,7 @@ description: This is my personal portfolio
 html_url: https://github.com/Eneko96/portfolio
 created_at: 2021-10-12T20:05:27Z
 topics: scrum
-languages: TypeScript,SCSS,CSS,HTML,JavaScript,Shell
+languages: [{"lang":"TypeScript","perc":54},{"lang":"SCSS","perc":40},{"lang":"CSS","perc":5},{"lang":"HTML","perc":0},{"lang":"JavaScript","perc":0},{"lang":"Shell","perc":0}]
 ---
 # Portfolio
 

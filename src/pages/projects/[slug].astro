@@ -7,12 +7,21 @@ import { serializeClient } from '../../utils/client';
 import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
 import Layout from '../../layouts/Layout.astro';
+const colors = ['#dcf5d6', '#96e283', '#73d85a', '#33841f']
 // remember, customComponents in md are only available in mdx
+
+const getColor = (percentage, arr) => {
+   if (percentage === 0) return arr[0] 
+   const zone = Math.floor((percentage / 100) * (colors.length - 1));
+   console.log(percentage, zone, arr[Math.min(zone, arr.length - 1)])
+   return arr[Math.min(zone, arr.length - 1)]
+}
 
 export async function getStaticPaths() {
     const readmes = await Astro.glob('../../content/projects/*.md');
 
     return readmes.map(readme => {
+      console.log(readme.frontmatter.languages)
     return {
         params: {
           slug: readme.frontmatter.name
@@ -24,7 +33,7 @@ export async function getStaticPaths() {
               created_at: readme.frontmatter.created_at,
               title: readme.frontmatter.name,
               topics: [],
-              languages: readme.frontmatter.languages?.split(',') ?? []
+              languages: readme.frontmatter.languages ?? []
             }
       }
     })
@@ -119,9 +128,9 @@ export async function getStaticPaths() {
             {
               languages.length ? (
                 <div class="study-tech-stack">
-                  {languages.map((lang: string, idx: number) => (
-                    <CustomChip client:visible key={idx + lang}>
-                      {lang}{' '}
+                  {languages.map((lang: { lang: string, perc: number}, idx: number) => (
+                    <CustomChip title={lang.perc} client:visible key={idx + lang.lang} color={getColor(lang.perc, colors)}>
+                      {lang.lang}{' '}
                     </CustomChip>
                   ))}
                 </div>

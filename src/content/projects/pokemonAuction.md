@@ -4,7 +4,12 @@ description: My first project with Vue, aplying simple components and data fetch
 html_url: https://github.com/Eneko96/pokemonAuction
 created_at: 2022-03-23T21:30:36Z
 topics:
-languages: Vue,JavaScript,HTML
+languages:
+  [
+    { 'lang': 'Vue', 'perc': 82 },
+    { 'lang': 'JavaScript', 'perc': 14 },
+    { 'lang': 'HTML', 'perc': 3 },
+  ]
 ---
 
 # POKEMON AUCTION
