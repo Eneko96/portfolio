@@ -92,7 +92,7 @@ const res: IRepos[] = await repos.json();
   </div>
   <div class="seemore">
     <div class="separator"></div>
-    <a style={{ whiteSpace: 'nowrap' }} id="loadMoreButton">
+    <a style={{ whiteSpace: 'nowrap' }} id="loadMoreButton" data-active="false" onclick="loadMore()">
       See more related works
     </a>
     <div class="separator"></div>
@@ -207,26 +207,21 @@ const res: IRepos[] = await repos.json();
     padding-bottom: 6px;
   }
 </style>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const caseStudies = document.querySelector('.case-studies');
-    let isLoadMore = false;
-
-    const lmButton = document.querySelector('#loadMoreButton');
-
+<script is:inline>
     const loadMore = () => {
-      lmButton.textContent = isLoadMore
+      const caseStudies = document.querySelector('.case-studies');
+      const lmButton = document.querySelector('#loadMoreButton');
+      const active = lmButton.getAttribute('data-active')
+      const isActive = active === 'true' ? true : active === 'false' ? false : undefined;
+
+      lmButton.textContent = isActive
         ? 'See more related works'
         : 'See less related works';
-      console.log(isLoadMore)
-      if (!isLoadMore) {
+      if (!isActive) {
         caseStudies?.classList.add('is-open');
       } else {
         caseStudies?.classList.remove('is-open');
       }
-      isLoadMore = !isLoadMore;
+      lmButton.setAttribute('data-active', isActive ? 'false' : 'true')
     }
-
-    lmButton?.addEventListener('click', loadMore);
-  })
 </script>
