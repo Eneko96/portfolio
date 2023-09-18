@@ -5,42 +5,8 @@ import Section from '../components/Section.astro';
 import Stack from '../components/Stack.astro';
 import Studies from '../components/Studies.astro';
 import Layout from '../layouts/Layout.astro';
-import { supabase } from '../supabase';
 
-const { data: baseData } = await supabase
-  .from('greeting')
-  .select(
-    `
-      *,
-      work_v2 (
-        id,
-        client,
-        date,
-        project_type,
-        description,
-        tech_stack
-      ),
-      projects_v2 (
-        id
-      ),
-      cert_ref (
-        id,
-        name,
-        type,
-        date,
-        subtitle,
-        description
-      ),
-      booking (
-        id
-      ),
-      tech_stack (
-        *
-      )
-    `
-  )
-  .order('id', { foreignTable: 'work_v2', ascending: true })
-  .single();
+import { baseData } from '../utils/supabase'
 ---
 
 <Layout title="AstroEnekofolio!">
@@ -136,6 +102,7 @@ const { data: baseData } = await supabase
     }
   }
 </style>
+
 <style is:global>
   @media (max-width: 768px) {
     .separator {
@@ -146,4 +113,3 @@ const { data: baseData } = await supabase
     scroll-behavior: smooth;
   }
 </style>
-<script></script>
