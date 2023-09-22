@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro'
+import HeadLine from '../../components/HeadLine.astro'
+---
+
+<Layout title="AstroEnekofolio!">
+    <HeadLine title="Nice to e-meet you!" />
+  <div class="book-title">
+    <h1>CV</h1>
+  </div>
+  <main title="Hey, welcome to my portfolio!">
+  <iframe class="pdf-display" src="../../../public/Resume-2023.pdf" />
+  </main>
+</Layout>
+
+<style>
+
+.pdf-display {
+    width: 100%;
+    height: 100dvh;
+    border: none;
+  }
+
+.book-title {
+  background-color: var(--neutral100);
+  min-height: 220px;
+  padding-left: 40px;
+  padding-top: 16px;
+  padding-bottom: 28px;
+  display: flex;
+  align-items: center;
+  background-color: var(--neutral100);
+}
+
+</style>
