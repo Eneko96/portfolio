@@ -2,6 +2,9 @@
   max-height: 333px;
   transition: max-height 0.5s ease;
   overflow: hidden;
+  padding: 0 24px 24px;
+  box-shadow: 6px 4px 24px #1c304b14;
+  border-radius: 8px;
 }
 
 .card-modulated.expanded {
@@ -38,7 +41,7 @@
 }
 
 .study-title {
-  margin-bottom: 40px !important;  
+  margin-bottom: 40px !important;
 }
 
 .study-see-more {
