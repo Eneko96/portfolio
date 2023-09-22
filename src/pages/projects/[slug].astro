@@ -13,7 +13,6 @@ const colors = ['chip-success-1', 'chip-success-2', 'chip-success-3', 'chip-succ
 const getColor = (percentage, arr) => {
    if (percentage === 0) return arr[0] 
    const zone = Math.floor((percentage / 100) * (colors.length - 1));
-   console.log(percentage, zone, arr[Math.min(zone, arr.length - 1)])
    return arr[Math.min(zone, arr.length - 1)]
 }
 
@@ -21,7 +20,6 @@ export async function getStaticPaths() {
     const readmes = await Astro.glob('../../content/projects/*.md');
 
     return readmes.map(readme => {
-      console.log(readme.frontmatter.languages)
     return {
         params: {
           slug: readme.frontmatter.name
