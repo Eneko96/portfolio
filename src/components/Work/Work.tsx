@@ -10,7 +10,10 @@ interface Work_V2Props {
 }
 
 export const CustomChip: React.FC<any> = ({ children, className, title }) => (
-  <small title={`${title}%`} className={`custom-chip ${className ?? ''}`}>
+  <small
+    title={title ? `${title}%` : ''}
+    className={`custom-chip ${className ?? ''}`}
+  >
     {children}
   </small>
 );

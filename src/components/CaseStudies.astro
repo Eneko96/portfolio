@@ -54,22 +54,22 @@ const res: IRepos[] = await repos.json();
             languages_url,
           }) => (
             <Card client:visible class="case-studies-card">
-              <div class="card-img-container">
-                <img
-                  class="card-img"
-                  src={
-                    TEMP_NAMES.includes(name)
-                      ? `/${name}.png`
-                      : 'https://picsum.photos/500?random=2.webp'
-                  }
-                  alt="project-image"
-                  loading="lazy"
-                />
-              </div>
-              <CustomChip class="custom-chip">
-                {private_repo ? 'private' : 'public' + ' Repository'}
-              </CustomChip>
-              <div class="card-title">{name}</div>
+            <div class="card-img-container">
+              <img
+                class="card-img"
+                src={
+                  TEMP_NAMES.includes(name)
+                    ? `/${name}.png`
+                    : 'https://picsum.photos/500?random=2.webp'
+                }
+                alt="project-image"
+                loading="lazy"
+              />
+            </div>
+            <CustomChip class="custom-chip">
+              {private_repo ? 'private' : 'public' + ' Repository'}
+            </CustomChip>
+            <div class="card-title">{name}</div>
               <div class="card-description-container">
                 <div class="subtitle">{homepage}</div>
                 <div class="medium card-description-inner">
@@ -98,15 +98,12 @@ const res: IRepos[] = await repos.json();
     <div class="separator"></div>
   </div>
 </div>
-<style>
+<style is:global>
   .custom-chip {
-    border-radius: 16px;
-    background-color: var(--secondary100);
-    text-transform: uppercase;
-    padding: 4px 16px;
-    width: fit-content;
-  }
-
+      width: fit-content;
+    }
+</style>
+<style>
   .case-studies {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
