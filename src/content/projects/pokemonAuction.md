@@ -24,4 +24,6 @@ Basic functionality:
 - Select Pokemon within two options
 - Once selected, see some information of the pokemon and selection rate
 
+![First page](/first_page.png)
+
 [My Github](https://github.com/Eneko96)
