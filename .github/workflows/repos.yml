@@ -1,0 +1,42 @@
+name: Update Repos Action
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+
+jobs:
+  check-repos:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+      - name: Check commit message
+        with:
+          ref: astro
+          node-version: '18'
+        run: |
+          commit_message=$(git log --format=%B -n 1 ${{ github.event.after }})
+          if [[ $commit_message == GITHUB:* ]]; then
+            echo "Commit message starts with 'GITHUB:', exiting."
+            exit 78  # Exit code 78 signals a neutral exit in GitHub Actions.
+          else
+            echo "Commit message is acceptable, continuing."
+          fi
+      - name: Run Node.js Script to update readmes
+        run: node scripts/getReadmes.mjs
+        env:
+          GITHUB_KEY: ${{ secrets.GH_TOKEN }}
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add -A
+          if git diff --exit-code --cached; then
+              echo "No changes to commit"
+          else
+          git commit -m "GITHUB: Automated update from GitHub Actions"
+              git push
+          fi
