@@ -82,7 +82,6 @@ const getLanguage = async (name) => {
     const total = Object.values(res).reduce((acc, curr) => acc + curr, 0);
     return JSON.stringify(
       Object.keys(res).map((el) => {
-        console.log(el, res[el]);
         return {
           lang: el,
           perc: getPercentage(res[el], total),
