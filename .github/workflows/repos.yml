@@ -22,11 +22,12 @@ jobs:
           else
             echo "Commit message is acceptable, continuing."
           fi
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
       - name: Run Node.js Script to update readmes
-        uses: actions/setup-node@v2
-        run: node scripts/getReadmes.mjs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: 'npm'
+      - run: node scripts/getReadmes.mjs
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
       - name: Commit and push if changed
