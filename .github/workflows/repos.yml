@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Check commit message
         with:
           ref: astro
+      - name: Check commit message
         run: |
           commit_message=$(git log --format=%B -n 1 ${{ github.event.after }})
           if [[ $commit_message == GITHUB:* ]]; then
