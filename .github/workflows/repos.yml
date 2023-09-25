@@ -26,7 +26,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18.x
-      - run: npm ci
+      - run: npm i
       - run: node scripts/getReadmes.mjs
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
