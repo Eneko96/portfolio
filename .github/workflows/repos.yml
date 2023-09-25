@@ -25,6 +25,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
       - name: Run Node.js Script to update readmes
+        uses: actions/setup-node@v2
         run: node scripts/getReadmes.mjs
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
