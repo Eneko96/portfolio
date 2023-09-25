@@ -3,6 +3,7 @@ name: Update Repos Action
 on:
   schedule:
     - cron: '0 12 * * *'
+  workflows_dispatch:
 
 jobs:
   check-repos:
