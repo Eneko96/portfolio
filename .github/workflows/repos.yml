@@ -11,8 +11,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
       - name: Check commit message
         with:
           ref: astro
@@ -25,7 +23,10 @@ jobs:
           else
             echo "Commit message is acceptable, continuing."
           fi
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
       - name: Run Node.js Script to update readmes
+        uses:
         run: node scripts/getReadmes.mjs
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
