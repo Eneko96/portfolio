@@ -4,7 +4,7 @@ description: Electron app for copying icons
 html_url: https://github.com/Eneko96/icons-electron
 created_at: 2023-09-23T13:05:28Z
 topics: 
-languages: [{"lang":"JavaScript","perc":52},{"lang":"CSS","perc":32},{"lang":"HTML","perc":15}]
+languages: [{"lang":"JavaScript","perc":50},{"lang":"CSS","perc":32},{"lang":"HTML","perc":16}]
 ---
 # Electron Icons
 
