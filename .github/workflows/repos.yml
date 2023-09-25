@@ -11,11 +11,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-
-      - name: Check commit message
         with:
           ref: astro
-          node-version: '18'
+      - name: Check commit message
         run: |
           commit_message=$(git log --format=%B -n 1 ${{ github.event.after }})
           if [[ $commit_message == GITHUB:* ]]; then
@@ -24,11 +22,12 @@ jobs:
           else
             echo "Commit message is acceptable, continuing."
           fi
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
       - name: Run Node.js Script to update readmes
-        uses:
-        run: node scripts/getReadmes.mjs
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+      - run: npm ci
+      - run: node scripts/getReadmes.mjs
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
       - name: Commit and push if changed
