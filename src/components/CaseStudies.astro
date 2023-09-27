@@ -69,7 +69,7 @@ const res: IRepos[] = await repos.json();
             <CustomChip class="custom-chip">
               {private_repo ? 'private' : 'public' + ' Repository'}
             </CustomChip>
-            <div class="card-title">{name.replace('-', ' ')}</div>
+            <div class="card-title">{name.replaceAll('-', ' ')}</div>
               <div class="card-description-container">
                 <div class="subtitle card-sub">{homepage}</div>
                 <div class="medium card-description-inner">
