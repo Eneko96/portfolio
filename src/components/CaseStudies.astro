@@ -2,14 +2,16 @@
 import { Card } from './Card/Card';
 import { CustomChip } from './Work/Work';
 
-export function tmpSort(list: { name: string }[]) {
+export function tmpSort(list: IRepos[]) {
   return list.sort((a, b) => {
-    if (a.name === 'weather-hackaton') return -1;
-    if (b.name === 'weather-hackaton') return 1;
+      if (a.name === 'UpRater') return -1;
+    if (b.name === 'UpRater') return 1;
     if (a.name === 'portfolio') return -1;
     if (b.name === 'portfolio') return 1;
-    if (a.name === 'BidsSocket') return -1;
-    if (b.name === 'BidsSocket') return 1;
+    if (a.name === 'icons-electron') return -1;
+    if (b.name === 'icons-electron') return 1;
+    if (a.name === 'weather-hackaton') return -1;
+    if (b.name === 'weather-hackaton') return 1;
     return 0;
   });
 }
@@ -34,6 +36,7 @@ const repos = await fetch(import.meta.env.GITHUB_URI,{
     Authorization: `Bearer ${import.meta.env.GITHUB_KEY}`
   }});
 const res: IRepos[] = await repos.json();
+const sorted = tmpSort([...res]) as IRepos[];
 ---
 
 <div class="case-studies-container" id="casestudies">
@@ -41,7 +44,7 @@ const res: IRepos[] = await repos.json();
   <div class="case-studies" style=`--studies: ${res.length}`>
     {
       res.length &&
-        res.map(
+        sorted.map(
           ({
             id,
             clone_url: _,
@@ -211,20 +214,20 @@ const res: IRepos[] = await repos.json();
 
 </style>
 <script is:inline>
-    const loadMore = () => {
-      const caseStudies = document.querySelector('.case-studies');
-      const lmButton = document.querySelector('#loadMoreButton');
-      const active = lmButton.getAttribute('data-active')
-      const isActive = active === 'true' ? true : active === 'false' ? false : undefined;
+const loadMore = () => {
+  const caseStudies = document.querySelector('.case-studies');
+  const lmButton = document.querySelector('#loadMoreButton');
+  const active = lmButton.getAttribute('data-active')
+  const isActive = active === 'true' ? true : active === 'false' ? false : undefined;
 
-      lmButton.textContent = isActive
-        ? 'See more related works'
-        : 'See less related works';
-      if (!isActive) {
-        caseStudies?.classList.add('is-open');
-      } else {
-        caseStudies?.classList.remove('is-open');
-      }
-      lmButton.setAttribute('data-active', isActive ? 'false' : 'true')
-    }
+  lmButton.textContent = isActive
+    ? 'See more related works'
+    : 'See less related works';
+  if (!isActive) {
+    caseStudies?.classList.add('is-open');
+  } else {
+    caseStudies?.classList.remove('is-open');
+  }
+  lmButton.setAttribute('data-active', isActive ? 'false' : 'true')
+}
 </script>
