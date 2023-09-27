@@ -1,9 +1,12 @@
-const VALID_PROJECT_TYPE = ['web', 'mobile', 'desktop', 'iot']
+export const VALID_PROJECT_TYPE = ['web', 'mobile', 'desktop', 'iot'];
 
-export const projectTypeParser = (projectTypes: string[]): string => {
-  const res = projectTypes.find((projectType) =>
-    VALID_PROJECT_TYPE.includes(projectType.toLowerCase())
-  )
+export const projectTypeParser = (projectTypes: string): string => {
+  if (projectTypes.length === 0) return 'web';
+  const res = projectTypes
+    .split(',')
+    .find((projectType) =>
+      VALID_PROJECT_TYPE.includes(projectType.toLowerCase()),
+    );
 
-  return res ?? 'web'
-}
+  return res;
+};

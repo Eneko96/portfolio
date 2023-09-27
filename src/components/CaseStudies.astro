@@ -46,15 +46,11 @@ const sorted = tmpSort([...res]) as IRepos[];
       res.length &&
         sorted.map(
           ({
-            id,
             clone_url: _,
             homepage,
             name,
             private_repo,
             description,
-            created_at,
-            topics,
-            languages_url,
           }) => (
             <Card client:visible class="case-studies-card">
             <div class="card-img-container">

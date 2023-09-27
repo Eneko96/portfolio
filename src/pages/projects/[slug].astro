@@ -7,10 +7,9 @@ import { serializeClient } from '../../utils/client';
 import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
 import Layout from '../../layouts/Layout.astro';
-const colors = ['chip-success-1', 'chip-success-2', 'chip-success-3', 'chip-success-4']
-// remember, customComponents in md are only available in mdx
+const colors = ['chip-success-1', 'chip-success-2', 'chip-success-3', 'chip-success-4'] as const;
 
-const getColor = (percentage, arr) => {
+const getColor = (percentage: number, arr: typeof colors) => {
    if (percentage === 0) return arr[0] 
    const zone = Math.floor((percentage / 100) * (colors.length - 1));
    return arr[Math.min(zone, arr.length - 1)]
@@ -30,7 +29,7 @@ export async function getStaticPaths() {
               description: readme.frontmatter.description,
               created_at: readme.frontmatter.created_at,
               title: readme.frontmatter.name,
-              topics: [],
+              topics: readme.frontmatter.topics ?? [],
               languages: readme.frontmatter.languages ?? []
             }
       }
@@ -97,9 +96,10 @@ export async function getStaticPaths() {
         <div class="study-right-side-container">
           <div class="study-right-side-element">
             <small>Client</small>
+            {serializeClient(topics).map(el => (
             <p class="study-topic-element">
-              {serializeClient(topics)}
-            </p>
+              {el}
+            </p>))}
           </div>
 
           <div class="study-right-side-element">
