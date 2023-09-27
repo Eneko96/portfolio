@@ -69,9 +69,9 @@ const res: IRepos[] = await repos.json();
             <CustomChip class="custom-chip">
               {private_repo ? 'private' : 'public' + ' Repository'}
             </CustomChip>
-            <div class="card-title">{name}</div>
+            <div class="card-title">{name.replace('-', ' ')}</div>
               <div class="card-description-container">
-                <div class="subtitle">{homepage}</div>
+                <div class="subtitle card-sub">{homepage}</div>
                 <div class="medium card-description-inner">
                   {description ?? 'There is no short description at the moment'}
                 </div>
@@ -172,6 +172,10 @@ const res: IRepos[] = await repos.json();
     position: relative;
   }
 
+  .subtitle.card-sub {
+    word-break: break-all;
+  }
+
   .card-anchor {
       position: absolute;
       padding-block: 10px;
@@ -203,6 +207,8 @@ const res: IRepos[] = await repos.json();
     max-height: calc(var(--studies, 1) * 444px);
     padding-bottom: 6px;
   }
+</style>
+
 </style>
 <script is:inline>
     const loadMore = () => {

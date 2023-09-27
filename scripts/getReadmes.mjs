@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config();
-const GITHUB_URI = 'https://api.github.com/users/eneko96/repos';
+const GITHUB_URI = 'https://api.github.com/users/eneko96/repos?per_page=100';
 const projectsDir = `./src/content/projects`;
 const GITHUB_KEY = process.env.GITHUB_KEY;
 
