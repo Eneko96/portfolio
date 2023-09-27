@@ -8,14 +8,14 @@
 .case-studies {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 32px
+  gap: 32px;
 }
 
 .case-studies-card {
-  animation: scaleit .2s;
+  animation: scaleit 0.2s;
   display: flex;
   flex-direction: column;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .case-studies-card > .custom-chip {
@@ -24,11 +24,11 @@
 
 .case-studies-card:hover {
   transform: scale(1.01);
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
-.case-studies-container { 
-  margin-bottom: 72px; 
+.case-studies-container {
+  margin-bottom: 72px;
 }
 
 .case-studies-title {
@@ -66,6 +66,7 @@
 
 .card-description-inner {
   color: var(--neutral700);
+  word-break: break-all;
 }
 
 .card-button-details {
@@ -80,4 +81,4 @@
     width: 335px;
     margin: auto;
   }
-} 
+}
