@@ -61,6 +61,15 @@ const stackList = () => {
     justify-content: center;
   }
 
+  .tech-stack-element > img {
+    scale: 1;
+    transition: scale 0.2s ease-in-out;
+  }
+
+  .tech-stack-element > img:hover {
+    scale: 1.1;
+  }
+
   @media (max-width: 768px) {
     .tech-stack-container {
       display: grid;
