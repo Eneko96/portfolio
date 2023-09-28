@@ -4,7 +4,7 @@ import { CustomChip } from './Work/Work';
 
 export function tmpSort(list: IRepos[]) {
   return list.sort((a, b) => {
-      if (a.name === 'UpRater') return -1;
+    if (a.name === 'UpRater') return -1;
     if (b.name === 'UpRater') return 1;
     if (a.name === 'portfolio') return -1;
     if (b.name === 'portfolio') return 1;
@@ -31,10 +31,11 @@ export interface IRepos {
 const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app'];
 
 // you could remove this as well and use the metadata from your readmes
-const repos = await fetch(import.meta.env.GITHUB_URI,{
-  headers: { 
-    Authorization: `Bearer ${import.meta.env.GITHUB_KEY}`
-  }});
+const repos = await fetch(import.meta.env.GITHUB_URI, {
+  headers: {
+    Authorization: `Bearer ${import.meta.env.GITHUB_KEY}`,
+  },
+});
 const res: IRepos[] = await repos.json();
 const sorted = tmpSort([...res]) as IRepos[];
 ---
@@ -45,30 +46,24 @@ const sorted = tmpSort([...res]) as IRepos[];
     {
       res.length &&
         sorted.map(
-          ({
-            clone_url: _,
-            homepage,
-            name,
-            private_repo,
-            description,
-          }) => (
+          ({ clone_url: _, homepage, name, private_repo, description }) => (
             <Card client:visible class="case-studies-card">
-            <div class="card-img-container">
-              <img
-                class="card-img"
-                src={
-                  TEMP_NAMES.includes(name)
-                    ? `/${name}.png`
-                    : 'https://picsum.photos/500?random=2.webp'
-                }
-                alt="project-image"
-                loading="lazy"
-              />
-            </div>
-            <CustomChip class="custom-chip">
-              {private_repo ? 'private' : 'public' + ' Repository'}
-            </CustomChip>
-            <div class="card-title">{name.replaceAll('-', ' ')}</div>
+              <div class="card-img-container">
+                <img
+                  class="card-img"
+                  src={
+                    TEMP_NAMES.includes(name)
+                      ? `/${name}.png`
+                      : 'https://picsum.photos/500?random=2.webp'
+                  }
+                  alt="project-image"
+                  loading="lazy"
+                />
+              </div>
+              <CustomChip class="custom-chip">
+                {private_repo ? 'private' : 'public' + ' Repository'}
+              </CustomChip>
+              <div class="card-title">{name.replaceAll('-', ' ')}</div>
               <div class="card-description-container">
                 <div class="subtitle card-sub">{homepage}</div>
                 <div class="medium card-description-inner">
@@ -85,13 +80,18 @@ const sorted = tmpSort([...res]) as IRepos[];
                 </a>
               </button>
             </Card>
-          )
+          ),
         )
     }
   </div>
   <div class="seemore">
     <div class="separator"></div>
-    <a style={{ whiteSpace: 'nowrap' }} id="loadMoreButton" data-active="false" onclick="loadMore()">
+    <a
+      style={{ whiteSpace: 'nowrap' }}
+      id="loadMoreButton"
+      data-active="false"
+      onclick="loadMore()"
+    >
       See more related works
     </a>
     <div class="separator"></div>
@@ -99,8 +99,8 @@ const sorted = tmpSort([...res]) as IRepos[];
 </div>
 <style is:global>
   .custom-chip {
-      width: fit-content;
-    }
+    width: fit-content;
+  }
 </style>
 <style>
   .case-studies {
@@ -109,7 +109,7 @@ const sorted = tmpSort([...res]) as IRepos[];
     gap: 32px;
     max-height: 450px;
     overflow-y: hidden;
-    transition: max-height .5s ease-in-out;
+    transition: max-height 0.5s ease-in-out;
   }
 
   .case-studies-card {
@@ -176,10 +176,10 @@ const sorted = tmpSort([...res]) as IRepos[];
   }
 
   .card-anchor {
-      position: absolute;
-      padding-block: 10px;
-      padding-inline:20px;
-    }
+    position: absolute;
+    padding-block: 10px;
+    padding-inline: 20px;
+  }
 
   @media (max-width: 768px) {
     .case-studies {
@@ -208,13 +208,13 @@ const sorted = tmpSort([...res]) as IRepos[];
   }
 </style>
 
-</style>
 <script is:inline>
 const loadMore = () => {
   const caseStudies = document.querySelector('.case-studies');
   const lmButton = document.querySelector('#loadMoreButton');
-  const active = lmButton.getAttribute('data-active')
-  const isActive = active === 'true' ? true : active === 'false' ? false : undefined;
+  const active = lmButton.getAttribute('data-active');
+  const isActive =
+    active === 'true' ? true : active === 'false' ? false : undefined;
 
   lmButton.textContent = isActive
     ? 'See more related works'
@@ -224,6 +224,6 @@ const loadMore = () => {
   } else {
     caseStudies?.classList.remove('is-open');
   }
-  lmButton.setAttribute('data-active', isActive ? 'false' : 'true')
-}
+  lmButton.setAttribute('data-active', isActive ? 'false' : 'true');
+};
 </script>
