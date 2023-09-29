@@ -25,9 +25,9 @@ jobs:
       - name: Run Node.js Script to update readmes
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.7.x
       - run: npm ci
-      - run: node scripts/getReadmes.mjs
+      - run: npm run readmes
         env:
           GITHUB_KEY: ${{ secrets.GH_TOKEN }}
       - name: Commit and push if changed
