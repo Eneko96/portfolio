@@ -6,4 +6,6 @@ created_at: 2022-09-25T23:04:54Z
 topics: 
 languages: [{"lang":"TypeScript","perc":79},{"lang":"JavaScript","perc":20}]
 ---
-## There is no content for this project at the moment
+# Queue
+
+Literaly just a queue implementation for JS
