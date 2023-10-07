@@ -34,7 +34,6 @@ export const Input = ({
   ...rest
 }: TCommonInputProps<React.InputHTMLAttributes<HTMLInputElement>>) => {
   const [error, setError] = useState(false);
-  if (!name) console.error(Error('Input must have a name'));
 
   const onChangeValue = (evt: React.ChangeEvent<HTMLInputElement>) => {
     const isValid = validation(evt.target.value);
