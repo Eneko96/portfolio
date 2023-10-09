@@ -26,6 +26,7 @@ export interface IRepos {
   created_at: string;
   languages_url: string;
   topics: string[];
+  language: string;
 }
 
 const TEMP_NAMES = ['100_projects', 'BidsSocket', 'chat-app'];
@@ -46,9 +47,16 @@ const sorted = tmpSort([...res]) as IRepos[];
     {
       res.length &&
         sorted.map(
-          ({ clone_url: _, homepage, name, private_repo, description }) => (
+          ({
+            clone_url: _,
+            homepage,
+            name,
+            private_repo,
+            description,
+            language,
+          }) => (
             <Card client:visible class="case-studies-card">
-              <div class="card-img-container">
+              <div class="card-img-container" data-language={language ?? 'N/A'}>
                 <img
                   class="card-img"
                   src={
@@ -136,6 +144,21 @@ const sorted = tmpSort([...res]) as IRepos[];
     margin: 0 -24px;
     margin-bottom: 20px;
     height: 200px;
+    position: relative;
+  }
+
+  .card-img-container::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 4px 8px;
+    background-color: var(--neutral700);
+    color: var(--neutral100);
+    border-radius: 0 8px 0 8px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.4;
   }
 
   .card-img {
