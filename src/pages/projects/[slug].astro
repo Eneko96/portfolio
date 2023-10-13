@@ -7,36 +7,41 @@ import { serializeClient } from '../../utils/client';
 import { projectTypeParser } from '../../utils/projectType';
 import { methodologyParser } from '../../utils/methodologies';
 import Layout from '../../layouts/Layout.astro';
-const colors = ['chip-success-1', 'chip-success-2', 'chip-success-3', 'chip-success-4'] as const;
+const colors = [
+  'chip-success-1',
+  'chip-success-2',
+  'chip-success-3',
+  'chip-success-4',
+] as const;
 
 const getColor = (percentage: number, arr: typeof colors) => {
-   if (percentage === 0) return arr[0] 
-   const zone = Math.floor((percentage / 100) * (colors.length - 1));
-   return arr[Math.min(zone, arr.length - 1)]
-}
+  if (percentage === 0) return arr[0];
+  const zone = Math.floor((percentage / 100) * (colors.length - 1));
+  return arr[Math.min(zone, arr.length - 1)];
+};
 
 export async function getStaticPaths() {
-    const readmes = await Astro.glob('../../content/projects/*.md');
+  const readmes = await Astro.glob('../../content/projects/*.md');
 
-    return readmes.map(readme => {
+  return readmes.map((readme) => {
     return {
-        params: {
-          slug: readme.frontmatter.name
-          },
-          props: {
-              readme,
-              name: readme.frontmatter.name,
-              description: readme.frontmatter.description,
-              created_at: readme.frontmatter.created_at,
-              title: readme.frontmatter.name,
-              topics: readme.frontmatter.topics ?? [],
-              languages: readme.frontmatter.languages ?? []
-            }
-      }
-    })
-};
-  const { Content } = Astro.props.readme;
-  const { name, created_at, topics, languages, title } = Astro.props;
+      params: {
+        slug: readme.frontmatter.name,
+      },
+      props: {
+        readme,
+        name: readme.frontmatter.name,
+        description: readme.frontmatter.description,
+        created_at: readme.frontmatter.created_at,
+        title: readme.frontmatter.name,
+        topics: readme.frontmatter.topics ?? [],
+        languages: readme.frontmatter.languages ?? [],
+      },
+    };
+  });
+}
+const { Content } = Astro.props.readme;
+const { name, created_at, topics, languages, title } = Astro.props;
 ---
 
 <script>
@@ -45,7 +50,7 @@ export async function getStaticPaths() {
   const isScrolling = null;
   const layoutWidth = window.innerWidth < 768 ? 'mobile' : 'desktop';
   const studyRightRef = document.querySelector(
-    '.study-right-side'
+    '.study-right-side',
   )! as HTMLElement;
 
   const shadowHandler = ({
@@ -70,7 +75,7 @@ export async function getStaticPaths() {
     }, 500);
   };
   document.addEventListener('scroll', () =>
-    shadowHandler({ studyRightRef, isScrolling, layoutWidth })
+    shadowHandler({ studyRightRef, isScrolling, layoutWidth }),
   );
 </script>
 
@@ -88,7 +93,7 @@ export async function getStaticPaths() {
       <div class="study-inner">
         <main class="study-inner-container-layer">
           <div class="study-inner-container-content">
-          <Content />
+            <Content />
           </div>
         </main>
       </div>
@@ -96,10 +101,11 @@ export async function getStaticPaths() {
         <div class="study-right-side-container">
           <div class="study-right-side-element">
             <small>Client</small>
-            {serializeClient(topics).map(el => (
-            <p class="study-topic-element">
-              {el}
-            </p>))}
+            {
+              serializeClient(topics).map((el) => (
+                <p class="study-topic-element">{el}</p>
+              ))
+            }
           </div>
 
           <div class="study-right-side-element">
@@ -126,11 +132,18 @@ export async function getStaticPaths() {
             {
               languages.length ? (
                 <div class="study-tech-stack">
-                  {languages.map((lang: { lang: string, perc: number}, idx: number) => (
-                    <CustomChip title={lang.perc} client:visible key={idx + lang.lang} className={getColor(lang.perc, colors)}>
-                      {lang.lang}{' '}
-                    </CustomChip>
-                  ))}
+                  {languages.map(
+                    (lang: { lang: string; perc: number }, idx: number) => (
+                      <CustomChip
+                        title={lang.perc}
+                        client:visible
+                        key={idx + lang.lang}
+                        className={getColor(lang.perc, colors)}
+                      >
+                        {lang.lang}{' '}
+                      </CustomChip>
+                    ),
+                  )}
                 </div>
               ) : (
                 <p>No languages provided</p>
@@ -144,157 +157,176 @@ export async function getStaticPaths() {
               {methodologyParser(topics)}
             </p>
           </div>
+
+          <div class="study-right-side-element">
+            <small>Github link</small>
+            <p class="study-topic-element">
+              <a
+                href={`https://github.com/Eneko96/${name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {name}
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</Layout>
 
-<style>
-  .study-img-container {
-    margin-top: 72px;
-    position: relative;
-  }
+  <style>
+    .study-img-container {
+      margin-top: 72px;
+      position: relative;
+    }
 
-  .study-img-title {
-    border-radius: 8px;
-    object-fit: cover;
-  }
+    .study-img-title {
+      border-radius: 8px;
+      object-fit: cover;
+    }
 
-  .study-img-container::after {
-    content: attr(data-title);
-    font-size: 20px;
-    line-height: 32px;
-    font-family: Roboto, sans-serif;
-    color: white;
-    width: 100%;
-    height: 20px;
-    position: absolute;
-    bottom: 32px;
-    left: 24px;
-  }
+    .study-img-container::after {
+      content: attr(data-title);
+      font-size: 20px;
+      line-height: 32px;
+      font-family: Roboto, sans-serif;
+      color: white;
+      width: 100%;
+      height: 20px;
+      position: absolute;
+      bottom: 32px;
+      left: 24px;
+    }
 
-  .study-header {
-    background-color: var(--neutral100);
-    min-height: 220px;
-    padding-left: 102px;
-    padding-top: 16px;
-    padding-bottom: 28px;
-  }
+    .study-header {
+      background-color: var(--neutral100);
+      min-height: 220px;
+      padding-left: 102px;
+      padding-top: 16px;
+      padding-bottom: 28px;
+    }
 
-  h1.study-header-content {
-    margin-top: 40px;
-    max-width: 672px;
-  }
+    h1.study-header-content {
+      margin-top: 40px;
+      max-width: 672px;
+    }
 
-  .study-inner-container-content {
-    width: 100%;
-  }
+    .study-inner-container-content {
+      width: 100%;
+    }
 
-  .study-inner-loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-  }
+    .study-inner-loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
 
-  .study-tech-stack {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 8px;
-    margin-bottom: 16px;
-    gap: 8px;
-  }
+    .study-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 8px;
+      margin-bottom: 16px;
+      gap: 8px;
+    }
 
-  .study-topic-element {
-    text-transform: capitalize;
-  }
+    .study-topic-element {
+      text-transform: capitalize;
+    }
 
-  .study-page-container {
-    margin: 39px auto 0px 102px;
-    display: flex;
-  }
+    .study-page-container {
+      margin: 39px auto 0px 102px;
+      display: flex;
+    }
 
-  .study-inner {
-    padding-top: 44px;
-    padding-bottom: 100px;
-    flex: 1 1 auto;
-  }
+    .study-inner {
+      padding-top: 44px;
+      padding-bottom: 100px;
+      flex: 1 1 auto;
+    }
 
-  .study-right-side {
-    transition: box-shadow 0.3s ease-in-out;
-  }
+    .study-right-side {
+      transition: box-shadow 0.3s ease-in-out;
+    }
 
-  .study-right-side {
-    flex: 0.1 0 528px;
-    padding: 48px 92px;
-    /* box-shadow: 4px 8px 16px rgba(28, 48, 75, 0.08); */
-    margin-left: 32px;
-  }
+    .study-right-side {
+      flex: 0.1 0 528px;
+      padding: 48px 92px;
+      margin-left: 32px;
+    }
 
-  .study-right-side-container {
-    position: sticky;
-    top: 128px;
-  }
+    .study-right-side-container {
+      position: sticky;
+      top: 128px;
+    }
 
-  .study-right-side-element {
-    margin-bottom: 24px;
-  }
+    .study-topic-element > a {
+      font-size: var(--body-medium-font-size);
+      font-weight: var(--body-medium-font-weight);
+      letter-spacing: var(--body-medium-letter-spacing);
+      line-height: var(--body-medium-line-height);
+      text-transform: capitalize;
+    }
 
-  .study-right-side-element > small {
-    text-transform: uppercase;
-  }
+    .study-right-side-element {
+      margin-bottom: 24px;
+    }
 
-  .study-right-side-element > p {
-    margin-top: 8px;
-  }
-  .tag-ds p {
+    .study-right-side-element > small {
+      text-transform: uppercase;
+    }
+
+    .study-right-side-element > p {
+      margin-top: 8px;
+    }
+    .tag-ds p {
       font-size: 16px !important;
       line-height: 24px !important;
     }
 
-  @media (max-width: 768px) {
-    .study-header {
-      padding: 32px 20px;
-      margin-inline: -20px;
-    }
-    h1.study-header-content {
-      margin-top: 10px;
-    }
+    @media (max-width: 768px) {
+      .study-header {
+        padding: 32px 20px;
+        margin-inline: -20px;
+      }
+      h1.study-header-content {
+        margin-top: 10px;
+      }
 
-    .study-page-container {
-      margin: 0;
-      flex-direction: column-reverse;
-    }
+      .study-page-container {
+        margin: 0;
+        flex-direction: column-reverse;
+      }
 
-    .study-right-side {
-      flex: none;
-      padding: 0;
-      box-shadow: none;
-      margin-left: 0;
-      margin-top: 32px;
-    }
+      .study-right-side {
+        flex: none;
+        padding: 0;
+        box-shadow: none;
+        margin-left: 0;
+        margin-top: 32px;
+      }
 
-    .study-right-side-container {
-      position: static;
-      top: unset;
-    }
+      .study-right-side-container {
+        position: static;
+        top: unset;
+      }
 
-    .study-right-side::after {
-      content: '';
-      display: block;
-      height: 1px;
-      background-color: var(--neutral200);
-      margin-top: 32px;
-      width: auto;
-    }
+      .study-right-side::after {
+        content: '';
+        display: block;
+        height: 1px;
+        background-color: var(--neutral200);
+        margin-top: 32px;
+        width: auto;
+      }
 
-    .study-inner {
-      padding-top: 32px;
+      .study-inner {
+        padding-top: 32px;
+      }
     }
-  }
-</style>
-<style is:global>
+  </style>
+  <style is:global>
     .study-inner-container-content p {
       font-size: 16px;
       line-height: 24px;
@@ -311,8 +343,8 @@ export async function getStaticPaths() {
       margin-top: 4rem;
     }
     .study-inner-container-content > pre {
-     padding: .5rem; 
-     border-radius: 8px;
+      padding: 0.5rem;
+      border-radius: 8px;
     }
-      
-</style>
+  </style>
+</Layout>
