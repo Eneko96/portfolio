@@ -13,7 +13,7 @@ Front end developer with expertice in Javascript, Node.js and React.
 
 - I've been developing Client-side solutions for automated medical imaging processing and interfacing with the REST api of orthanc PACS DICOM server and the Kubernetes scheduler
 
-- Currently forking as software engineer on LabelGrup Networks
+- Currently working as software engineer at Kneat Solutions
 
 - I'm currently learning Python, Django, Nginx, Vuejs, Redux, Flutter, ...
 
