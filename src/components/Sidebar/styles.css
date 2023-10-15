@@ -18,3 +18,20 @@
 .sidebar-button_selected::before {
   display: none;
 }
+
+.sidebar_collapsed.sidebar-custom > .sidebar-collapsed-button {
+  pointer-events: none !important;
+}
+
+.sidebar_collapsed.sidebar-custom > .sidebar-collapsed-button::before {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: var(--unit);
+  content: '';
+  background-image: url('../../../public/Logo.svg');
+  transition: all 0.2s ease-in-out;
+  background-size: contain;
+  display: inline-block;
+  background-repeat: no-repeat;
+}
