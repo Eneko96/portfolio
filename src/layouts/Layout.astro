@@ -10,7 +10,8 @@ import '../../tag/index.css';
 const { title } = Astro.props;
 const { pathname } = Astro.url;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta
@@ -19,19 +20,25 @@ const { pathname } = Astro.url;
         Personal porfolio made in Astro"
     />
     <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="https://www.astro.enekofolio.info">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Enekofolio">
-    <meta property="og:description" content="Owned portfolio for showing my content and skills">
-    <meta property="og:image" content="/public/irish.jpeg">
+    <meta property="og:url" content="https://www.astro.enekofolio.info" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Enekofolio" />
+    <meta
+      property="og:description"
+      content="Owned portfolio for showing my content and skills"
+    />
+    <meta property="og:image" content="/public/irish.jpeg" />
 
     <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta property="twitter:domain" content="enekofolio.info">
-    <meta property="twitter:url" content="https://www.astro.enekofolio.info">
-    <meta name="twitter:title" content="Enekofolio">
-    <meta name="twitter:description" content="Owned portfolio for showing my content and skills">
-    <meta name="twitter:image" content="/public/Logo.svg">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="enekofolio.info" />
+    <meta property="twitter:url" content="https://www.astro.enekofolio.info" />
+    <meta name="twitter:title" content="Enekofolio" />
+    <meta
+      name="twitter:description"
+      content="Owned portfolio for showing my content and skills"
+    />
+    <meta name="twitter:image" content="/public/Logo.svg" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
@@ -41,10 +48,11 @@ const { pathname } = Astro.url;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions /> 
+    <ViewTransitions />
   </head>
   <body class="tag-ds">
     <SB client:load url={pathname} />
+    <div class="progress"></div>
     <div class="tag-content">
       <slot />
     </div>
@@ -53,114 +61,134 @@ const { pathname } = Astro.url;
         <PreFooter client:load />
       )
     }
+    <style is:global>
+      .tag-content {
+        margin-left: 80px;
+      }
+
+      .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        z-index: 1;
+        background-color: var(--primary500);
+        animation: progress 2s ease-out forwards;
+        animation-timeline: scroll(root block);
+      }
+
+      @keyframes progress {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      @media screen and (max-width: 845px) {
+        .tag-content {
+          margin-left: 0px;
+          padding-inline: 20px;
+        }
+        .focuser {
+          display: none;
+        }
+        .sidebar-custom {
+          position: static !important;
+          height: 65px !important;
+          width: 100% !important;
+          max-width: none !important;
+          padding: 0 8px !important;
+          align-items: center;
+          display: flex !important;
+          flex-direction: row;
+          background-color: var(--neutral0) !important;
+          justify-content: space-between;
+          border-bottom: var(--neutral200) solid 1px;
+        }
+        .sidebar-custom::before {
+          content: '';
+          display: inline-block;
+          width: 34px;
+          height: 34px;
+          background-image: url('../../public/Logo.svg');
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+        .sidebar_divider {
+          display: none;
+        }
+        .sidebar-button {
+          -webkit-tap-highlight-color: transparent;
+          display: none !important;
+        }
+        .sidebar-collapsed-button {
+          display: none !important;
+        }
+      }
+    </style>
+
+    <style is:global>
+      html {
+        --outlineOffset: -4px;
+        --fontFamily: 'Roboto', sans-serif;
+        --neutral0: #ffffff;
+        --neutral100: #f8f8f9;
+        --neutral200: #ebebee;
+        --neutral300: #e0e0e4;
+        --neutral400: #ccccd3;
+        --neutral500: #adadb5;
+        --neutral600: #7c828a;
+        --neutral700: #5c6573;
+        --neutral800: #1c304b;
+        --accent100: #eff8f7;
+        --accent200: #ceeae8;
+        --accent300: #aedcd9;
+        --accent400: #8dcdc9;
+        --accent500: #5cb8b2;
+        --accent600: #367c78;
+        --accent700: #275956;
+        --primary100: #ced7e4;
+        --primary200: #8894a5;
+        --primary300: #727f8f;
+        --primary400: #495667;
+        --primary500: #1c304b;
+        --primary600: #030c18;
+        --primary700: #000306;
+        --secondary100: #ccf2ff;
+        --secondary200: #99e6ff;
+        --secondary300: #33cdff;
+        --secondary400: #009acc;
+        --secondary500: #107b9e;
+        --secondary600: #0e6987;
+        --secondary700: #004d66;
+        --tertiary100: #7e63e8;
+        --tertiary200: #81a4ff;
+        --tertiary300: #ffc133;
+        --tertiary400: #ff8e4f;
+        --tertiary500: #e87a71;
+        --tertiary600: #eb9fbb;
+        --alert100: #fff0cc;
+        --alert200: #ffd166;
+        --alert400: #ffc133;
+        --alert600: #b88000;
+        --error100: #f7d3d0;
+        --error200: #f0a6a1;
+        --error400: #e87a71;
+        --error600: #e04d42;
+        --success100: #dcf5d6;
+        --success200: #96e283;
+        --success400: #73d85a;
+        --success600: #33841f;
+        --primaryColor: var(--primary500);
+        --secondaryColor: var(--secondary500);
+        --accentColor: var(--accent500);
+        --errorColor: var(--error400);
+        --successColor: var(--success400);
+        --alertColor: var(--alert400);
+      }
+    </style>
   </body>
 </html>
-
-<style is:global>
-.tag-content {
-  margin-left: 80px;
-  }
-
-@media screen and (max-width:  845px) {
-    .tag-content {
-        margin-left: 0px;
-        padding-inline: 20px;
-      }
-    .focuser {
-        display: none;
-      }
-    .sidebar-custom {
-        position: static !important;
-        height: 65px !important;
-        width: 100% !important;
-        max-width: none !important;
-        padding: 0 8px !important;
-        align-items: center;
-        display: flex !important;
-        flex-direction: row;
-        background-color: var(--neutral0) !important;
-        justify-content: space-between ;
-        border-bottom: var(--neutral200) solid 1px;
-      }
-    .sidebar-custom::before {
-        content: '';
-        display: inline-block;
-        width: 34px;
-        height: 34px;
-        background-image: url('../../public/Logo.svg');
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-    .sidebar_divider {
-        display: none;
-      }
-    .sidebar-button {
-        -webkit-tap-highlight-color: transparent;
-        display: none !important;
-    }
-    .sidebar-collapsed-button {
-        display: none !important;
-      }
-  }
-</style>
-
-<style is:global>
-  html {
-    --outlineOffset: -4px;
-    --fontFamily: 'Roboto', sans-serif;
-    --neutral0: #ffffff;
-    --neutral100: #f8f8f9;
-    --neutral200: #ebebee;
-    --neutral300: #e0e0e4;
-    --neutral400: #ccccd3;
-    --neutral500: #adadb5;
-    --neutral600: #7c828a;
-    --neutral700: #5c6573;
-    --neutral800: #1c304b;
-    --accent100: #eff8f7;
-    --accent200: #ceeae8;
-    --accent300: #aedcd9;
-    --accent400: #8dcdc9;
-    --accent500: #5cb8b2;
-    --accent600: #367c78;
-    --accent700: #275956;
-    --primary100: #ced7e4;
-    --primary200: #8894a5;
-    --primary300: #727f8f;
-    --primary400: #495667;
-    --primary500: #1c304b;
-    --primary600: #030c18;
-    --primary700: #000306;
-    --secondary100: #ccf2ff;
-    --secondary200: #99e6ff;
-    --secondary300: #33cdff;
-    --secondary400: #009acc;
-    --secondary500: #107b9e;
-    --secondary600: #0e6987;
-    --secondary700: #004d66;
-    --tertiary100: #7e63e8;
-    --tertiary200: #81a4ff;
-    --tertiary300: #ffc133;
-    --tertiary400: #ff8e4f;
-    --tertiary500: #e87a71;
-    --tertiary600: #eb9fbb;
-    --alert100: #fff0cc;
-    --alert200: #ffd166;
-    --alert400: #ffc133;
-    --alert600: #b88000;
-    --error100: #f7d3d0;
-    --error200: #f0a6a1;
-    --error400: #e87a71;
-    --error600: #e04d42;
-    --success100: #dcf5d6;
-    --success200: #96e283;
-    --success400: #73d85a;
-    --success600: #33841f;
-    --primaryColor: var(--primary500);
-    --secondaryColor: var(--secondary500);
-    --accentColor: var(--accent500);
-    --errorColor: var(--error400);
-    --successColor: var(--success400);
-    --alertColor: var(--alert400);
-  }
-</style>

@@ -53,12 +53,25 @@ const stackList = () => {
     flex-wrap: wrap;
     margin-top: 40px;
   }
+  @keyframes reveal {
+    0% {
+      opacity: 0;
+      translate: 0, 100px;
+    }
+    100% {
+      opacity: 1;
+      translate: 0, 0;
+    }
+  }
 
   .tech-stack-element {
     height: 75px;
     width: 75px;
     display: flex;
     justify-content: center;
+    animation: reveal linear both;
+    animation-timeline: view();
+    animation-range: entry 20% cover 30%;
   }
 
   .tech-stack-element > img {
