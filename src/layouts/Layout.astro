@@ -67,6 +67,7 @@ const { pathname } = Astro.url;
       }
 
       .progress {
+        display: none;
         position: fixed;
         top: 0;
         left: 0;
@@ -74,8 +75,14 @@ const { pathname } = Astro.url;
         height: 3px;
         z-index: 1;
         background-color: var(--primary500);
-        animation: progress 2s ease-out forwards;
-        animation-timeline: scroll(root block);
+      }
+
+      @supports (animation-timeline: scroll()) {
+        .progress {
+          display: block;
+          animation: progress 2s ease-out forwards;
+          animation-timeline: scroll(root block);
+        }
       }
 
       @keyframes progress {
