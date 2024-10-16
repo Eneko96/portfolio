@@ -48,6 +48,15 @@ const { pathname } = Astro.url;
     />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com; 
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; 
+      img-src 'self' data: https://www.astro.enekofolio.info;
+    "
+    />
     <ViewTransitions />
   </head>
   <body class="tag-ds">
