@@ -1,0 +1,190 @@
+{
+  "name": "Iñigo Moreno",
+  "position": "Software developer",
+  "experience": "Front End Development, Freelancing, Api Gateways",
+  "skills": "User Interface, Performance Code, Architecture, Data display, Operations",
+  "strengths": "Discipline, Developer, Relator, Harmony, Arranger",
+  "id": 1,
+  "image": "https://ybyxjuwgzujcpujzibme.supabase.co/storage/v1/object/sign/portfolio/first_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZmlyc3RfaW1hZ2Uud2VicCIsImlhdCI6MTY2MzUzNTk0MSwiZXhwIjoxOTc4ODk1OTQxfQ.a_vKWIJzngtVwOARuUjWgGpad-Cx9hP9YITg2qrbPVE",
+  "work_v2": [
+    {
+      "id": 1,
+      "date": "Sep 2021 to Mar 2022",
+      "client": "LabelGrup",
+      "tech_stack": [
+        "Redux",
+        "Redux Toolkit",
+        "React",
+        "JavaScript",
+        "CSS",
+        "MongoDB",
+        "Tailwind",
+        "Styled Components",
+        "Storybook",
+        "React Hook Form",
+        "WebPack"
+      ],
+      "description": [
+        "I was working for FEDEFARMA on a project to improve the warehouses management. The main goal was to change the physical management of logistics to a digital and automated one.",
+        "My position was as a Front End Developer where my task was to create all the infrastructure for the component flow with its logic included, and improve the performance of components with a heavy computational effort."
+      ],
+      "project_type": "IT Consultant"
+    },
+    {
+      "id": 2,
+      "date": "Feb 2023 to currently",
+      "client": "Kneat solutions",
+      "tech_stack": [
+        "React",
+        "JavaScript",
+        "CSS",
+        "Azure Devops",
+        "AWS",
+        "HTML",
+        "I18n",
+        "NodeJS",
+        "Dotnet",
+        "Agile"
+      ],
+      "description": [
+        "We are developing and maintaining a best in class SaaS aimed to document validation and testing for industrial and pharmaceutic industries",
+        "As member of R&D, among my tasks, besides bug fixing and maintainment, I develop new features for the product, proposals for either better DX and research for a better outcome from our users experience"
+      ],
+      "project_type": "FullStack developer"
+    },
+    {
+      "id": 3,
+      "date": "Jun 2018 to Nov 2019",
+      "client": "Universitat Pompeu Fabra, Barcelona",
+      "tech_stack": [
+        "React",
+        "Javascript",
+        "CSS",
+        "MongoDB",
+        "Heroku",
+        "SCSS",
+        "NodeJS",
+        "Electron",
+        "Python",
+        "Swagger"
+      ],
+      "description": [
+        "I was developing client side solutions for automated medical imaging, processing, interfacing with the REST API of Orthanc PACS DICOM server and a Kubernetes scheduler.",
+        "My task was to make a web app able to run workflows coming from orthanc and send the data to Kubernetes."
+      ],
+      "project_type": "Full Stack Developer Trainee"
+    },
+    {
+      "id": 4,
+      "date": "Dec 2020 to Sep 2021",
+      "client": "CAP Igualada",
+      "tech_stack": [
+        "Python",
+        "React",
+        "JavaScript",
+        "CSS",
+        "NextJS",
+        "Pandas",
+        "OpenPyxl",
+        "NodeJS",
+        "ExpressJS",
+        "MongoDB",
+        "Redux"
+      ],
+      "description": [
+        "My job in CAP Igualada was to serialize Excel sheets into MongoDB documents using PYTHON, PANDAS and OPENPYXL as the API for the data cleaning and management",
+        "After having the data serialized, I would make use of it in a REST API to retrieve it through the web app.",
+        "The main goal of the web app was to have digital management on the reservations of the employees. It included the option to make or change reservations over acknowledgement of the supervisor."
+      ],
+      "project_type": "Full Stack Developer"
+    },
+    {
+      "id": 5,
+      "date": "Apr 2022 to Apr 2023",
+      "client": "UST Global",
+      "tech_stack": [
+        "Redux",
+        "React",
+        "JavaScript",
+        "Jest",
+        "CSS",
+        "MongoDB",
+        "Storybook (mdx)",
+        "WebPack"
+      ],
+      "description": [
+        "Currently developing a New Design System for Adecco Group. The tech stack is based on React for the component development, Storybook to contain all the components and styles for a later deploy, SCSS preprocessor for all the styling and JEST and React Testing Library for the unit testing. Everything followed by a Component driven development.",
+        "As an IT Consultant, me and all of my colleagues have direct communication with the client (Adecco) for a successful development.",
+        "I am also responsible for creating code infrastructure in order to integrate all the web apps and migrations of legacy design systems with minimal changes."
+      ],
+      "project_type": "Front End Engineer"
+    }
+  ],
+  "cert_ref": [
+    {
+      "id": 1,
+      "date": "2022-08-15T00:00:00+00:00",
+      "name": "Reference from Labelgrup",
+      "type": "Reference",
+      "subtitle": "Front End Engineer",
+      "description": [
+        "To whom it may concern",
+        "I am delighted to recommend my former colleague, Iñigo Moreno Ramos.",
+        "Iñigo worked with me from september of 2021 to may of 2022.",
+        "During the time, I was really impressed by his general performance, particularly on his knowledge of React as well as his hunger for learning. He worked specifically in the Sfera project, related to The pharmaceutical field.",
+        "His abilities in programming allowed us to shorten the development weight, as well as an intern redesign, which was a great help in the later development of the platform. Those skills were put into consideration by the client.",
+        "I was able to work daily with him. It was easy to communicate and always ready to contribute his opinions about the project concerning an upgrade of the project whenever possible, in addition to cooperating with the team when needed. With a critical mindset but positive, always wanting to bring the project a step forward.",
+        "Regarding the personality, a lovely colleague, with whom you could talk about anything. Without any doubt, he will be a very valuable asset for any company.",
+        "Regards,",
+        "José Luis Español – Senior Back End developer, Labelgrup",
+        "jlespanol@labelgrup.com"
+      ]
+    },
+    {
+      "id": 2,
+      "date": "2023-01-24T00:00:00+00:00",
+      "name": "Reference from UST",
+      "type": "Reference",
+      "subtitle": "IT Consultant",
+      "description": [
+        "Estimated Kneat,",
+        "I am pleased to recommend Iñigo Moreno for whatever job offer regarding frontend tech. During the time I’ve been working with Iñigo, I’ve been witness of his ability to develop efficient and elegant solutions on complex software problems",
+        "Iñigo is a talented developer and very devoted to his work, with big ability working as a team.  His talent communicating and cooperate with colleagues from different fields has been a great added asset for our team. Furthermore, Iñigo has a wide knowledge of front development, as his eager to improve himself in backend.",
+        "To add up, I’d strongly recommend Iñigo on your company.I am sure his skills resolving problems and his dedication will be a more than enough asset.",
+        "Sincerely, Miguel Mateos, Senior UX/UI Designer.",
+        "miguelmateosnchz@gmail.com"
+      ]
+    }
+  ],
+  "tech_stack": [
+    {
+      "id": 1,
+      "js": true,
+      "css": true,
+      "vue": true,
+      "deno": false,
+      "html": true,
+      "node": true,
+      "rust": false,
+      "sass": true,
+      "tree": false,
+      "mongo": true,
+      "react": true,
+      "redux": true,
+      "docker": true,
+      "github": true,
+      "heroku": true,
+      "svelte": true,
+      "flutter": false,
+      "netlify": true,
+      "next-js": true,
+      "supabase": true,
+      "tailwind": true,
+      "bootstrap": true,
+      "storybook": true,
+      "created_at": "2022-09-27T23:06:55+00:00",
+      "typescript": true,
+      "greeting_id": 1
+    }
+  ]
+}
