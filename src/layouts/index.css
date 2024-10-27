@@ -1,0 +1,27 @@
+/* For Material Icons */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400; /* Adjust as needed */
+  font-display: swap;
+  src: url('/fonts/MaterialSymbolsOutlined-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+  
+}
+
+/* For Material Icons Outlined, if you have a separate font file */
+@font-face {
+  font-family: 'Material Icons Outlined';
+  font-style: normal;
+  font-weight: 400; /* Adjust as needed */
+  font-display: swap;
+  src: url('/fonts/MaterialSymbolsOutlined-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+}
+
+/* For Material Icons Round, if you have a separate font file */
+@font-face {
+  font-family: 'Material Icons Round';
+  font-style: normal;
+  font-weight: 400; /* Adjust as needed */
+  font-display: swap;
+  src: url('/fonts/MaterialSymbolsRounded-VariableFont_FILL,GRAD,opsz,wght.ttf') format('truetype');
+}

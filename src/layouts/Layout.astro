@@ -5,6 +5,8 @@ import { ViewTransitions } from 'astro:transitions';
 export interface Props {
   title: string;
 }
+
+import './index.css';
 import '../../tag/index.css';
 
 const { title } = Astro.props;
@@ -42,25 +44,16 @@ const { pathname } = Astro.url;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <link
-      rel="preload"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Round"
-      rel="stylesheet"
-    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta
       http-equiv="Content-Security-Policy"
       content="
     default-src 'self';
-    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+    script-src 'self' 'unsafe-inline';
+    style-src 'self' 'unsafe-inline';
     img-src 'self' data: https://www.astro.enekofolio.info https://fastly.picsum.photos https://picsum.photos;
-    font-src 'self' https://fonts.gstatic.com;
   "
     />
     <ViewTransitions />
