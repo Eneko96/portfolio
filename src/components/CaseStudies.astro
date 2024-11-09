@@ -61,7 +61,7 @@ const sorted = tmpSort([...res]) as IRepos[];
                   class="card-img"
                   src={
                     TEMP_NAMES.includes(name)
-                      ? `/${name}.png`
+                      ? `/${name}.webp`
                       : 'https://picsum.photos/500?random=2.webp'
                   }
                   alt="project-image"
@@ -78,14 +78,11 @@ const sorted = tmpSort([...res]) as IRepos[];
                   {description ?? 'There is no short description at the moment'}
                 </div>
               </div>
-              <button class="button card-button-details">
-                <a
-                  class="card-anchor"
-                  style="color:inherit"
-                  href={`/projects/${name}`}
-                >
-                  See Details
-                </a>
+              <button
+                class="button card-button-details"
+                onclick={`window.location.href='/projects/${name}'`}
+              >
+                See Details
               </button>
             </Card>
           ),
@@ -199,9 +196,8 @@ const sorted = tmpSort([...res]) as IRepos[];
   }
 
   .card-anchor {
-    position: absolute;
-    padding-block: 10px;
-    padding-inline: 20px;
+    width: 100%;
+    justify-content: center;
   }
 
   @media (max-width: 768px) {
@@ -232,21 +228,21 @@ const sorted = tmpSort([...res]) as IRepos[];
 </style>
 
 <script is:inline>
-const loadMore = () => {
-  const caseStudies = document.querySelector('.case-studies');
-  const lmButton = document.querySelector('#loadMoreButton');
-  const active = lmButton.getAttribute('data-active');
-  const isActive =
-    active === 'true' ? true : active === 'false' ? false : undefined;
+  const loadMore = () => {
+    const caseStudies = document.querySelector('.case-studies');
+    const lmButton = document.querySelector('#loadMoreButton');
+    const active = lmButton.getAttribute('data-active');
+    const isActive =
+      active === 'true' ? true : active === 'false' ? false : undefined;
 
-  lmButton.textContent = isActive
-    ? 'See more related works'
-    : 'See less related works';
-  if (!isActive) {
-    caseStudies?.classList.add('is-open');
-  } else {
-    caseStudies?.classList.remove('is-open');
-  }
-  lmButton.setAttribute('data-active', isActive ? 'false' : 'true');
-};
+    lmButton.textContent = isActive
+      ? 'See more related works'
+      : 'See less related works';
+    if (!isActive) {
+      caseStudies?.classList.add('is-open');
+    } else {
+      caseStudies?.classList.remove('is-open');
+    }
+    lmButton.setAttribute('data-active', isActive ? 'false' : 'true');
+  };
 </script>
