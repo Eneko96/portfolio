@@ -63,7 +63,6 @@ export const WorkV2: React.FC<Work_V2Props> = ({
 };
 
 export const Work = ({ data }: { data: any[] }) => {
-  console.log(data);
   return data?.map(({ project_type: projectType, ...rest }, index) => (
     <WorkV2 key={index + 'work-section'} projectType={projectType} {...rest} />
   ));

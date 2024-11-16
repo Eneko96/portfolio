@@ -16,16 +16,10 @@ export const PreFooter = () => {
           style={{ minWidth: 'calc(20 * var(--unit))' }}
           onClick={() => {
             ref.current?.click();
+            window.location.href = '/Book';
           }}
         >
-          <a
-            hidden
-            href="/Book"
-            ref={ref}
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            Book
-          </a>
+          Book
           <span className="material-icons">trending_flat </span>
         </button>
       </div>
