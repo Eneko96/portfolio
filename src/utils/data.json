@@ -8,6 +8,50 @@
   "image": "https://ybyxjuwgzujcpujzibme.supabase.co/storage/v1/object/sign/portfolio/first_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZmlyc3RfaW1hZ2Uud2VicCIsImlhdCI6MTY2MzUzNTk0MSwiZXhwIjoxOTc4ODk1OTQxfQ.a_vKWIJzngtVwOARuUjWgGpad-Cx9hP9YITg2qrbPVE",
   "work_v2": [
     {
+      "id": 2,
+      "date": "Feb 2023 to currently",
+      "client": "Kneat solutions",
+      "tech_stack": [
+        "React",
+        "JavaScript",
+        "CSS",
+        "Azure Devops",
+        "AWS",
+        "HTML",
+        "I18n",
+        "NodeJS",
+        "Dotnet",
+        "Agile"
+      ],
+      "description": [
+        "We are developing and maintaining a best in class SaaS aimed to document validation and testing for industrial and pharmaceutic industries",
+        "As member of R&D, among my tasks, besides bug fixing and maintainment, I develop new features for the product, proposals for either better DX and research for a better outcome from our users experience",
+        "Awarded with outstanding performance award - Employee of the year 2024"
+      ],
+      "project_type": "FullStack developer"
+    },
+    {
+      "id": 5,
+      "date": "Apr 2022 to Apr 2023",
+      "client": "UST Global",
+      "tech_stack": [
+        "Redux",
+        "React",
+        "JavaScript",
+        "Jest",
+        "CSS",
+        "MongoDB",
+        "Storybook (mdx)",
+        "WebPack"
+      ],
+      "description": [
+        "Currently developing a New Design System for Adecco Group. The tech stack is based on React for the component development, Storybook to contain all the components and styles for a later deploy, SCSS preprocessor for all the styling and JEST and React Testing Library for the unit testing. Everything followed by a Component driven development.",
+        "As an IT Consultant, me and all of my colleagues have direct communication with the client (Adecco) for a successful development.",
+        "I am also responsible for creating code infrastructure in order to integrate all the web apps and migrations of legacy design systems with minimal changes."
+      ],
+      "project_type": "Front End Engineer"
+    },
+    {
       "id": 1,
       "date": "Sep 2021 to Mar 2022",
       "client": "LabelGrup",
@@ -29,28 +73,6 @@
         "My position was as a Front End Developer where my task was to create all the infrastructure for the component flow with its logic included, and improve the performance of components with a heavy computational effort."
       ],
       "project_type": "IT Consultant"
-    },
-    {
-      "id": 2,
-      "date": "Feb 2023 to currently",
-      "client": "Kneat solutions",
-      "tech_stack": [
-        "React",
-        "JavaScript",
-        "CSS",
-        "Azure Devops",
-        "AWS",
-        "HTML",
-        "I18n",
-        "NodeJS",
-        "Dotnet",
-        "Agile"
-      ],
-      "description": [
-        "We are developing and maintaining a best in class SaaS aimed to document validation and testing for industrial and pharmaceutic industries",
-        "As member of R&D, among my tasks, besides bug fixing and maintainment, I develop new features for the product, proposals for either better DX and research for a better outcome from our users experience"
-      ],
-      "project_type": "FullStack developer"
     },
     {
       "id": 3,
@@ -97,27 +119,6 @@
         "The main goal of the web app was to have digital management on the reservations of the employees. It included the option to make or change reservations over acknowledgement of the supervisor."
       ],
       "project_type": "Full Stack Developer"
-    },
-    {
-      "id": 5,
-      "date": "Apr 2022 to Apr 2023",
-      "client": "UST Global",
-      "tech_stack": [
-        "Redux",
-        "React",
-        "JavaScript",
-        "Jest",
-        "CSS",
-        "MongoDB",
-        "Storybook (mdx)",
-        "WebPack"
-      ],
-      "description": [
-        "Currently developing a New Design System for Adecco Group. The tech stack is based on React for the component development, Storybook to contain all the components and styles for a later deploy, SCSS preprocessor for all the styling and JEST and React Testing Library for the unit testing. Everything followed by a Component driven development.",
-        "As an IT Consultant, me and all of my colleagues have direct communication with the client (Adecco) for a successful development.",
-        "I am also responsible for creating code infrastructure in order to integrate all the web apps and migrations of legacy design systems with minimal changes."
-      ],
-      "project_type": "Front End Engineer"
     }
   ],
   "cert_ref": [
