@@ -22,6 +22,21 @@ const { pathname } = Astro.url;
       content="Author: Inigo Moreno,
         Personal porfolio made in Astro"
     />
+    <link rel="canonical" href="https://astro.enekofolio.info/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Inigo Moreno Ramos",
+        "url": "https://astro.enekofolio.info",
+        "description": "Author: Inigo Moreno, Personal portfolio made in Astro",
+        "jobTitle": "Senior Frontend Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Mastercard"
+        }
+      }
+    </script>
     <!-- Facebook Meta Tags -->
     <meta property="og:url" content="https://www.astro.enekofolio.info" />
     <meta property="og:type" content="website" />
