@@ -17,7 +17,7 @@
     "@emailjs/browser": "^3.7.0",
     "@supabase/supabase-js": "^1.35.3",
     "@testing-library/react": "^13.3.0",
-    "framer-motion": "^6.3.12",
+    "framer-motion": "^6.5.1",
     "gapi-script": "^1.2.0",
     "lodash": "^4.17.21",
     "marked": "^4.1.1",
