@@ -8,8 +8,33 @@
   "image": "https://ybyxjuwgzujcpujzibme.supabase.co/storage/v1/object/sign/portfolio/first_image.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJwb3J0Zm9saW8vZmlyc3RfaW1hZ2Uud2VicCIsImlhdCI6MTY2MzUzNTk0MSwiZXhwIjoxOTc4ODk1OTQxfQ.a_vKWIJzngtVwOARuUjWgGpad-Cx9hP9YITg2qrbPVE",
   "work_v2": [
     {
+      "id": 6,
+      "date": "Jun 2025 to currently",
+      "client": "Mastercard",
+      "tech_stack": [
+        "React",
+        "JavaScript",
+        "CSS",
+        "Azure Devops",
+        "Jenkins",
+        "React-Query",
+        "Redux",
+        "AWS",
+        "HTML",
+        "I18n",
+        "NodeJS",
+        "Dotnet",
+        "Agile"
+      ],
+      "description": [
+        "As a Senior Front-End Engineer on the Mastercard Developers platform, I contributed to building and enhancing a global API portal used by developers and partners worldwide.",
+        "My work focused on creating intuitive, responsive, and accessible user interfaces, integrating with a shared design system, and implementing interactive features such as inline API testing and dynamic documentation to improve the developer experience."
+      ],
+      "project_type": "Senior software engineer"
+    },
+    {
       "id": 2,
-      "date": "Feb 2023 to currently",
+      "date": "Feb 2023 to Jun 2025",
       "client": "Kneat solutions",
       "tech_stack": [
         "React",
