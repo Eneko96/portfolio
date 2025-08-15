@@ -87,7 +87,7 @@ const { name, created_at, topics, languages, title } = Astro.props;
         <BreadcrumbItem id="1" title="Case Studies" href="/" />
         <BreadcrumbItem id="2" title={name} href="#" />
       </Breadcrumb>
-      <h1 class="study-header-content">{title}</h1>
+      <h1 class="study-header-content" transition:name={`title-${title}`}>{title}</h1>
     </div>
     <div class="study-page-container">
       <div class="study-inner">
@@ -161,7 +161,8 @@ const { name, created_at, topics, languages, title } = Astro.props;
           <div class="study-right-side-element">
             <small>Github link</small>
             <p class="study-topic-element">
-              <a
+            <a
+                data-astro-prefetch='hover'
                 href={`https://github.com/Eneko96/${name}`}
                 target="_blank"
                 rel="noopener noreferrer"

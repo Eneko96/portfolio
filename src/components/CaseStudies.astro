@@ -71,19 +71,19 @@ const sorted = tmpSort([...res]) as IRepos[];
               <CustomChip class="custom-chip">
                 {private_repo ? 'private' : 'public' + ' Repository'}
               </CustomChip>
-              <div class="card-title">{name.replaceAll('-', ' ')}</div>
+              <div class="card-title" transition:name={`title-${name}`}>{name.replaceAll('-', ' ')}</div>
               <div class="card-description-container">
                 <div class="subtitle card-sub">{homepage}</div>
                 <div class="medium card-description-inner">
                   {description ?? 'There is no short description at the moment'}
                 </div>
               </div>
-              <button
+              <a
+                href={`/projects/${name}`}
                 class="button card-button-details"
-                onclick={`window.location.href='/projects/${name}'`}
               >
                 See Details
-              </button>
+              </a>
             </Card>
           ),
         )
@@ -189,6 +189,14 @@ const sorted = tmpSort([...res]) as IRepos[];
     margin-top: auto;
     margin-left: auto;
     position: relative;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-button-details:hover {
+    color: white;
   }
 
   .subtitle.card-sub {
